@@ -12,10 +12,13 @@ namespace HappyBDay.Models
     {
         [Key]
         public int Id { get; set; }
-        [Required]
+
+        [Required(ErrorMessage ="Required field.")]
         [StringLength(50)]
         public string Username { get; set; }
+
         [Column("Id_Profile")]
+        [Required(ErrorMessage ="Required field.")]
         public int IdProfile { get; set; }
 
         [ForeignKey(nameof(IdProfile))]
