@@ -8,20 +8,21 @@ namespace HappyBDay.Data
 {
     public class SeedData
     {
-        private const string NOME_UTILIZADOR_ADMIN_PADRAO = "admin@cap.com";
-        private const string PASSWORD_UTILIZADOR_ADMIN_PADRAO = "teste";
 
-        internal static async Task InsereAdministradorPadraoAsync(UserManager<IdentityUser> gestorUtilizadores)
+        private const string AdminUser = "admin@bbdl.com";
+        private const string AdminPassword = "Password#123";
+
+        internal static async Task InsertStandartAdmin(UserManager<IdentityUser> userManager)
         {
-            IdentityUser utilizador = await gestorUtilizadores.FindByNameAsync(NOME_UTILIZADOR_ADMIN_PADRAO);
+            IdentityUser user = await userManager.FindByNameAsync(AdminUser);
 
-            if (utilizador == null)
+            if (user == null)
             {
-                utilizador = new IdentityUser(NOME_UTILIZADOR_ADMIN_PADRAO);
-                await gestorUtilizadores.CreateAsync(utilizador, PASSWORD_UTILIZADOR_ADMIN_PADRAO);
+
+                user = new IdentityUser(AdminUser);
+                await userManager.CreateAsync(user, AdminPassword);
             }
         }
-
 
     }
 }
