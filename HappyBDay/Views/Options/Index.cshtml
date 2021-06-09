@@ -1,39 +1,64 @@
-﻿<section class="content-section bg-primary text-white">
-    <div class="container px-4 px-lg-5 text-center">
-        <h2 class="text-secondary mb-5">It's Happy Birthday time!</h2>
-        <h3 class="mb-4">Let's send some congratulation e-mails...</h3>
-        
-        <a class="btn btn-xl btn-white" href="#!">Send Emails</a>
-    </div>
-</section>
-
+﻿<header>
+    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+        <div class="container">
+            <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">HappyBDay</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                <ul class="navbar-nav flex-grow-1">
+                    <li class="nav-item">
+                        @*<a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>*@
+                    </li>
+                    <li class="nav-item">
+                        @*<a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>*@
+                    </li>
+                </ul>
+                <partial name="_LoginPartial" />
+            </div>
+        </div>
+    </nav>
+</header>
 
 <section class="content-section bg-primary text-white text-center" id="services">
     <div class="container px-4 px-lg-5">
         <div class="content-section-heading mb-4">
-            <h3 class="text-secondary mb-4">Other options</h3>
-            
+            <h2 class="text-secondary mb-4">It's Happy Birthday time!</h2>
+            <h3 class="mb-4">Let's send some congratulation e-mails...</h3>
+            <a type="button" class="btn btn-secondary mb-5" href="#!">Send Emails</a>
+            <hr/>
+            <h3 class="text-secondary mt-5 mb-5">Other options</h3>
+
         </div>
         <div class="row gx-4 gx-lg-5">
             <div class="col-lg-3 col-md-6 mb-5 mb-lg-0">
-                <span class="service-icon rounded-circle mx-auto mb-3"><i class="fas fa-id-badge"></i></span>
-                <h3><strong>Users</strong></h3>
-                
+                <a style="text-decoration:none; color:white" asp-area="" asp-controller="Users" asp-action="Index">
+                    <span class="service-icon rounded-circle mx-auto mb-3"><i class="fas fa-id-badge"></i></span>
+                    <h3><strong>Users</strong></h3>
+                </a>
+
             </div>
             <div class="col-lg-3 col-md-6 mb-5 mb-lg-0">
-                <span class="service-icon rounded-circle mx-auto mb-3"><i class="fas fa-building"></i></span>
-                <h3><strong>Departments</strong></h3>
-                
+                <a style="text-decoration:none; color:white" asp-area="" asp-controller="Departments" asp-action="Index">
+                    <span class="service-icon rounded-circle mx-auto mb-3"><i class="fas fa-building"></i></span>
+                    <h3 ><strong>Departments</strong></h3>
+                </a>
+
             </div>
             <div class="col-lg-3 col-md-6 mb-5 mb-md-0">
-                <span class="service-icon rounded-circle mx-auto mb-3"><i class="fas fa-users"></i></span>
-                <h3><strong>Consultants</strong></h3>
-                
+                <a style="text-decoration:none; color:white" asp-area="" asp-controller="Consultants" asp-action="Index">
+                    <span class="service-icon rounded-circle mx-auto mb-3"><i class="fas fa-users"></i></span>
+                    <h3><strong>Consultants</strong></h3>
+                </a>
+
             </div>
             <div class="col-lg-3 col-md-6">
-                <span class="service-icon rounded-circle mx-auto mb-3"><i class="fas fa-id-card""></i></span>
-                <h3><strong>Profiles</strong></h3>
-                
+                <a style="text-decoration:none; color:white" asp-area="" asp-controller="Profile" asp-action="Index">
+                    <span class="service-icon rounded-circle mx-auto mb-3"><i class="fas fa-id-card"></i></span>
+                    <h3><strong>Profiles</strong></h3>
+                </a>
+
             </div>
         </div>
     </div>
