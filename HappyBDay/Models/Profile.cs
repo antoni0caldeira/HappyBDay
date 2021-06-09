@@ -17,7 +17,8 @@ namespace HappyBDay.Models
 
         [Key]
         public int Id { get; set; }
-        [Required]
+
+        [Required(ErrorMessage ="Required field.")]
         [StringLength(100)]
         public string Name { get; set; }
 
