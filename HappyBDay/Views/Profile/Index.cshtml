@@ -1,18 +1,19 @@
 ﻿@model IEnumerable<HappyBDay.Models.Profile>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Profiles";
 }
 <section class="content-section bg-light" id="about">
     <div class="container px-4 px-lg-5 text-center">
         <div class="row gx-4 gx-lg-5 justify-content-center">
-            <h1>Index</h1>
 
-            <p>
-                <a asp-action="Create">Create New</a>
-            </p>
+            <h1 class="mb-5" style="color: #0070AC">Profiles</h1>
+            <div class="text-left">
+                <a type="button" class="btn btn-secondary mb-5" asp-action="Create">New Profile</a>
+            </div>
+
             <table class="table">
-                <thead>
+                <thead style="color: #0070AC">
                     <tr>
                         <th>
                             @Html.DisplayNameFor(model => model.Name)
