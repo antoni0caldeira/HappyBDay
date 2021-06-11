@@ -46,7 +46,7 @@ namespace HappyBDay.Controllers
         }
 
         // GET: Users/Create
-        public IActionResult Create()
+        public IActionResult Register()
         {
             ViewData["IdProfile"] = new SelectList(_context.Profile, "Id", "Name");
             return View();
@@ -57,7 +57,7 @@ namespace HappyBDay.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Username,IdProfile")] Users users)
+        public async Task<IActionResult> Register([Bind("Id,Username,IdProfile")] Users users)
         {
             if (ModelState.IsValid)
             {
