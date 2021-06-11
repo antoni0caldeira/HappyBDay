@@ -7,16 +7,20 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using HappyBDay.Data;
 using HappyBDay.Models;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 
 namespace HappyBDay.Controllers
 {
     public class UsersController : Controller
     {
         private readonly HappyBDayContext _context;
+        private readonly UserManager<IdentityUser> _userManager;
 
-        public UsersController(HappyBDayContext context)
+        public UsersController(HappyBDayContext context, UserManager<IdentityUser> userManager)
         {
             _context = context;
+            _userManager = userManager;
         }
 
         // GET: Users
@@ -57,16 +61,45 @@ namespace HappyBDay.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Register([Bind("Id,Username,IdProfile")] Users users)
+        public async Task<IActionResult> Register(UsersRegisterViewModel userInfo, Users users)
         {
-            if (ModelState.IsValid)
-            {
-                _context.Add(users);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
-            }
             ViewData["IdProfile"] = new SelectList(_context.Profile, "Id", "Name", users.IdProfile);
-            return View(users);
+
+            IdentityUser user = await _userManager.FindByNameAsync(userInfo.Email);
+            
+            if (user != null)
+            {
+                ModelState.AddModelError("Email", "There is already a user with that email");
+            }
+
+            user = new IdentityUser(userInfo.Email);
+            IdentityResult result = await _userManager.CreateAsync(user, userInfo.Password);
+            if (!result.Succeeded)
+            {
+                ModelState.AddModelError("", "Faild to register, please try again later.");
+            }
+            else
+            {
+                await _userManager.AddToRoleAsync(user, "User");
+            }
+
+            if (!ModelState.IsValid)
+            {
+                return View(userInfo);
+            }
+
+            Users userOriginal = new Users
+            {
+                Username = userInfo.Username,
+                IdProfile = userInfo.IdProfile,
+            };
+            
+              _context.Add(userOriginal);
+              await _context.SaveChangesAsync();
+              return RedirectToAction(nameof(Index));
+           
+           
+           
         }
 
         // GET: Users/Edit/5

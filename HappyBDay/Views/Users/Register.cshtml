@@ -1,7 +1,7 @@
-﻿@model HappyBDay.Models.Users
+﻿@model UsersRegisterViewModel;
 
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Register";
 }
 <section class="content-section bg-light" id="about">
     <div class="container px-4 px-lg-5">
@@ -11,19 +11,34 @@
         <hr />
         <div class="row">
             <div class="col-md-4">
-                <form asp-action="Create">
+                <form asp-action="Register">
                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                     <div class="form-group">
                         <label asp-for="Username" class="control-label"></label>
                         <input asp-for="Username" class="form-control" />
                         <span asp-validation-for="Username" class="text-danger"></span>
                     </div>
-                    <div class="form-group">
-                        <label asp-for="IdProfile" class="control-label"></label>
-                        <select asp-for="IdProfile" class="form-control" asp-items="ViewBag.IdProfile"></select>
+                    <div>
+                        <label asp-for="Email" class="control-label"></label>
+                        <input asp-for="Email" class="form-control" />
+                        <span asp-validation-for="Email" class="text-danger"></span>
+                    </div>
+                    <div>
+                        <label asp-for="Password" class="control-label"></label>
+                        <input asp-for="Password" class="form-control" />
+                        <span asp-validation-for="Password" class="text-danger"></span>
+                    </div>
+                    <div>
+                        <label asp-for="ConfirmPassword" class="control-label"></label>
+                        <input asp-for="ConfirmPassword" class="form-control" />
+                        <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
                     </div>
                     <div class="form-group">
-                        <input type="submit" value="Create" class="btn btn-primary" />
+                         <label asp-for="IdProfile" class="control-label"></label>
+                         <select asp-for="IdProfile" class="form-control" asp-items="ViewBag.IdProfile"></select>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="Register" class="btn btn-primary" />
                     </div>
                 </form>
             </div>
