@@ -48,7 +48,7 @@ namespace HappyBDay
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
 
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, UserManager<IdentityUser> userManager)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, UserManager<IdentityUser> userManager, RoleManager<IdentityRole> roleManager)
 
         {
             if (env.IsDevelopment())
@@ -79,8 +79,15 @@ namespace HappyBDay
             });
 
 
+            SeedData.InsertRolesAsync(roleManager).Wait();
             SeedData.InsertStandartAdmin(userManager).Wait();
+           
 
+
+            if(env.IsDevelopment())
+            {
+                SeedData.InsertFakeUsersAsync(userManager).Wait();
+            }
         }
     }
 }
