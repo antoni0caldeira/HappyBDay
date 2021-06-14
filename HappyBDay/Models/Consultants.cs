@@ -25,6 +25,7 @@ namespace HappyBDay.Models
         [Required(ErrorMessage = "Required field.")] // Talvez alterar para nullable
         [StringLength(9, MinimumLength = 9, ErrorMessage = "Phone number must have 9 digits.")]
         [RegularExpression(@"(9[1236]|2\d)\d{7}", ErrorMessage = "Incorrect phone number.")]
+        [Display(Name = "Phone Number")]
         public string Phone { get; set; }
 
         public bool Status { get; set; }
@@ -32,9 +33,11 @@ namespace HappyBDay.Models
         [DataType(DataType.Date)]
         [Required(ErrorMessage ="Required field.")]
         [Column("Date_Of_Birth", TypeName = "date")]
+        [Display(Name = "Date of birth")]
         public DateTime DateOfBirth { get; set; }
 
         [Column("Consultant_Number")]
+        [Display(Name = "Consultant Number")]
         public int ConsultantNumber { get; set; }
 
         [StringLength(12)]
@@ -42,10 +45,12 @@ namespace HappyBDay.Models
 
         [Column("Id_Departments")]
         [Required]
+        [Display(Name = "Name of the departement")]
         public int IdDepartments { get; set; }
 
         [ForeignKey(nameof(IdDepartments))]
         [InverseProperty(nameof(Departments.Consultants))]
+        [Display(Name = "Name of the departement")]
         public virtual Departments IdDepartmentsNavigation { get; set; }
     }
 }

@@ -48,7 +48,8 @@ namespace HappyBDay
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
 
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, UserManager<IdentityUser> userManager, RoleManager<IdentityRole> roleManager)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env,HappyBDayContext DbContext,
+            UserManager<IdentityUser> userManager, RoleManager<IdentityRole> roleManager)
 
         {
             if (env.IsDevelopment())
@@ -74,7 +75,7 @@ namespace HappyBDay
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller=Consultants}/{action=Index}/{id?}");
                 endpoints.MapRazorPages();
             });
 
@@ -86,7 +87,10 @@ namespace HappyBDay
 
             if(env.IsDevelopment())
             {
+                SeedData.InsertFakeData(DbContext);
+
                 SeedData.InsertFakeUsersAsync(userManager).Wait();
+                
             }
         }
     }
