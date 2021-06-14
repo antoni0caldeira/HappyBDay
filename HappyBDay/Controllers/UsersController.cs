@@ -12,6 +12,7 @@ using Microsoft.AspNetCore.Identity;
 
 namespace HappyBDay.Controllers
 {
+    [Authorize]
     public class UsersController : Controller
     {
         private readonly HappyBDayContext _context;

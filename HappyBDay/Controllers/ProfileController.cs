@@ -7,9 +7,11 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using HappyBDay.Data;
 using HappyBDay.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace HappyBDay.Controllers
 {
+    [Authorize]
     public class ProfileController : Controller
     {
         private readonly HappyBDayContext _context;
