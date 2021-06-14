@@ -15,14 +15,17 @@ namespace HappyBDay.Models
 
         [Required(ErrorMessage ="Required field.")]
         [StringLength(50)]
+       
         public string Username { get; set; }
 
         [Column("Id_Profile")]
         [Required(ErrorMessage ="Required field.")]
+        [Display(Name = "Profile")]
         public int IdProfile { get; set; }
 
         [ForeignKey(nameof(IdProfile))]
         [InverseProperty(nameof(Profile.Users))]
+        [Display(Name = "Profile")]
         public virtual Profile IdProfileNavigation { get; set; }
     }
 }

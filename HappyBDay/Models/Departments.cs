@@ -20,6 +20,7 @@ namespace HappyBDay.Models
 
         [Required(ErrorMessage ="Required field.")]
         [StringLength(50)]
+        [Display(Name = "Name of the departement")]
         public string Name { get; set; }
 
         [InverseProperty("IdDepartmentsNavigation")]
