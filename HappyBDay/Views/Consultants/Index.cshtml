@@ -103,7 +103,7 @@
 
 
                 <li class="page-item @(Model.Pagination.CurrentPage == 1 ? "disabled" : "")">
-                    <a class="page-link text-black-50 border-info" asp-action="Index" asp-route-page="1" asp-route-nomePesquisar="@Model.NomePesquisar">Firs</a>
+                    <a class="page-link text-black-50 border-info" asp-action="Index" asp-route-page="1" asp-route-nomePesquisar="@Model.NomePesquisar">First</a>
                 </li>
 
                 @for (int i = initialPage; i <= finalPage; i++)
