@@ -10,7 +10,8 @@ using HappyBDay.Models;
 using Microsoft.AspNetCore.Authorization;
 
 namespace HappyBDay.Controllers
-{    [Authorize]
+{
+    [Authorize]
     public class ConsultantsController : Controller
     {
         private readonly HappyBDayContext _context;
@@ -27,13 +28,13 @@ namespace HappyBDay.Controllers
             Pagination pagination = new Pagination
             {
                 
-                TotalItems = await _context.Consultants.Where(p=>nomePesquisar == null || p.Name.Contains(nomePesquisar)).CountAsync(),
+                TotalItems = await _context.Consultants.Where(p=> p.Status.Equals(true) && nomePesquisar == null || p.Name.Contains(nomePesquisar)).CountAsync(),
                 CurrentPage = page
 
             };
 
             var happyBDayContext = _context.Consultants.Include(c => c.IdDepartmentsNavigation);
-            List<Consultants> consultants = await happyBDayContext.Where(p => nomePesquisar == null || p.Name.Contains(nomePesquisar))
+            List<Consultants> consultants = await happyBDayContext.Where(p => p.Status.Equals(true) && nomePesquisar == null || p.Name.Contains(nomePesquisar))
                 .OrderBy(c => c.Name)
                 .Skip(pagination.PageSize * (page - 1))
                 .Take(pagination.PageSize)
@@ -46,6 +47,34 @@ namespace HappyBDay.Controllers
                 NomePesquisar=nomePesquisar
             };
             
+            return base.View(model);
+        }
+
+        public async Task<IActionResult> IndexOff(string nomePesquisar, int page = 1)
+        {
+
+            Pagination pagination = new Pagination
+            {
+
+                TotalItems = await _context.Consultants.Where(p => p.Status.Equals(false) && nomePesquisar == null || p.Name.Contains(nomePesquisar)).CountAsync(),
+                CurrentPage = page
+
+            };
+
+            var happyBDayContext = _context.Consultants.Include(c => c.IdDepartmentsNavigation);
+            List<Consultants> consultants = await happyBDayContext.Where(p => p.Status.Equals(false) && nomePesquisar == null || p.Name.Contains(nomePesquisar))
+                .OrderBy(c => c.Name)
+                .Skip(pagination.PageSize * (page - 1))
+                .Take(pagination.PageSize)
+                .ToListAsync();
+
+            ConsultantsListViewModel model = new ConsultantsListViewModel
+            {
+                Pagination = pagination,
+                Consultants = consultants,
+                NomePesquisar = nomePesquisar
+            };
+
             return base.View(model);
         }
 
