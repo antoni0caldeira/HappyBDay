@@ -125,18 +125,18 @@
 
 
                 <li class="page-item @(Model.Pagination.CurrentPage == 1 ? "disabled" : "")">
-                    <a class="page-link text-black-50 border-info" asp-action="Index" asp-route-page="1">First</a>
+                    <a class="page-link text-black-50 border-info" asp-action="Index" asp-route-page="1" asp-route-nomePesquisar="@Model.NomePesquisar">First</a>
                 </li>
 
                 @for (int i = initialPage; i <= finalPage; i++)
                 {
                     <li class="page-item @(Model.Pagination.CurrentPage == i ? "active" : "")">
-                        <a class="page-link text-black-50 border-info" asp-action="Index" asp-route-page="@i">@i</a>
+                        <a class="page-link text-black-50 border-info" asp-action="Index" asp-route-page="@i" asp-route-nomePesquisar="@Model.NomePesquisar">@i</a>
                     </li>
                 }
 
                 <li class="page-item @(Model.Pagination.CurrentPage == Model.Pagination.TotalPages ? "disabled" : "")">
-                    <a class="page-link text-black-50 border-info" asp-action="Index" asp-route-page="@Model.Pagination.TotalPages">Last</a>
+                    <a class="page-link text-black-50 border-info" asp-action="Index" asp-route-page="@Model.Pagination.TotalPages" asp-route-nomePesquisar="@Model.NomePesquisar">Last</a>
                 </li>
 
             </ul>
