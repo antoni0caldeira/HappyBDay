@@ -1,4 +1,4 @@
-﻿@model IEnumerable<HappyBDay.Models.Consultants>
+﻿@model ConsultantsListViewModel
 
 @{
     ViewData["Title"] = "Consultants";
@@ -12,74 +12,114 @@
                 <a type="button" class="btn btn-secondary mb-5" asp-action="Create">New Consultant</a>
             </div>
 
-            <table class="table">
-                <thead style="color: #0070AC">
-                    <tr>
-                        <th>
-                            @Html.DisplayNameFor(model => model.Name)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.Email)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.Phone)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.Status)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.DateOfBirth)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.ConsultantNumber)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.Gender)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.IdDepartmentsNavigation)
-                        </th>
-                        <th></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach (var item in Model)
-                    {
+            @if (Model.Consultants.Count() > 0)
+            {
+
+                <table class="table">
+                    <thead style="color: #0070AC">
                         <tr>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Name)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Email)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Phone)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Status)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.DateOfBirth)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.ConsultantNumber)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Gender)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.IdDepartmentsNavigation.Name)
-                            </td>
-                            <td>
-                                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-                            </td>
+                            <th>
+                                @Html.DisplayFor(model => model.Consultants[0].Name)
+                            </th>
+                            <th>
+                                Email
+                            </th>
+                            <th>
+                                Phone
+                            </th>
+                            <th>
+                                Status
+                            </th>
+                            <th>
+                                @Html.DisplayFor(model => model.Consultants[0].DateOfBirth)
+                            </th>
+                            <th>
+                                ConsultantNumber
+                            </th>
+                            <th>
+                                Gender
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Consultants[0].IdDepartmentsNavigation)
+                            </th>
+                            <th></th>
                         </tr>
-                    }
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.Consultants)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Name)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Email)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Phone)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Status)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.DateOfBirth)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.ConsultantNumber)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Gender)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.IdDepartmentsNavigation.Name)
+                                </td>
+                                <td>
+                                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            }
 
         </div>
-</div>
+        <nav>
+            <ul class="pagination">
+                @{
+                    int initialPage = Model.Pagination.CurrentPage - Pagination.NUMBER_PAGES_SHOW_BEFORE_AFTER;
+                    if (initialPage < 1)
+                    {
+                        initialPage = 1;
+                    }
+
+                    int finalPage = Model.Pagination.CurrentPage + Pagination.NUMBER_PAGES_SHOW_BEFORE_AFTER;
+                    if (finalPage > Model.Pagination.TotalPages)
+                    {
+                        finalPage = Model.Pagination.TotalPages;
+                    }
+                }
+
+
+                <li class="page-item @(Model.Pagination.CurrentPage == 1 ? "disabled" : "")">
+                    <a class="page-link text-black-50 border-info" asp-action="Index" asp-route-pagina="1">First</a>
+                </li>
+
+                @for (int i = initialPage; i <= finalPage; i++)
+                {
+                    <li class="page-item @(Model.Pagination.CurrentPage == i ? "active" : "")">
+                        <a class="page-link text-black-50 border-info" asp-action="Index" asp-route-pagina="@i">@i</a>
+                    </li>
+                }
+
+                <li class="page-item @(Model.Pagination.CurrentPage == Model.Pagination.TotalPages ? "disabled" : "")">
+                    <a class="page-link text-black-50 border-info" asp-action="Index" asp-route-pagina="@Model.Pagination.TotalPages">Last</a>
+                </li>
+
+            </ul>
+        </nav>
+
+    </div>
+    
 </section>
