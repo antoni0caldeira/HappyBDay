@@ -93,6 +93,7 @@ namespace HappyBDay.Controllers
             {
                 Username = userInfo.Username,
                 IdProfile = userInfo.IdProfile,
+                Email = userInfo.Email,
             };
             
               _context.Add(userOriginal);
@@ -125,7 +126,7 @@ namespace HappyBDay.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Username,IdProfile")] Users users)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Username,Email,IdProfile")] Users users)
         {
             if (id != users.Id)
             {

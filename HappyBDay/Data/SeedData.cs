@@ -51,18 +51,21 @@ namespace HappyBDay.Data
                 {
                     Username = "Bernardo",
                     IdProfileNavigation = user,
+                    Email = "Bernardo@bbdl.com",
 
                 },
                 new Users
                 {
                     Username = "Luís",
                     IdProfileNavigation = user,
+                    Email = "Luis@bbdl.com",
 
                 },
                 new Users
                 {
                     Username = "David",
                     IdProfileNavigation = user,
+                    Email = "David@bbdl.com",
 
                 },
             });

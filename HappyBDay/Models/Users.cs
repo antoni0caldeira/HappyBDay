@@ -18,6 +18,11 @@ namespace HappyBDay.Models
        
         public string Username { get; set; }
 
+        [Required(ErrorMessage = "Required field.")]
+        [EmailAddress]
+        [StringLength(256)]
+        public string Email { get; set; }
+
         [Column("Id_Profile")]
         [Required(ErrorMessage ="Required field.")]
         [Display(Name = "Profile")]
