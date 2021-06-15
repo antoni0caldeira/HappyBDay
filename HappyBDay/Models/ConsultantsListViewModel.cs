@@ -11,5 +11,7 @@ namespace HappyBDay.Models
         public List<Consultants> Consultants { get; set; }
 
         public Pagination Pagination { get; set; }
+
+        public string NomePesquisar { get; set; }
     }
 }

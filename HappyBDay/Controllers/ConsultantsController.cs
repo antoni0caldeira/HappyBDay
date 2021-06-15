@@ -21,19 +21,19 @@ namespace HappyBDay.Controllers
         }
 
         // GET: Consultants
-        public async Task<IActionResult> Index(int page = 1)
+        public async Task<IActionResult> Index(string nomePesquisar, int page = 1)
         {
 
             Pagination pagination = new Pagination
             {
                 
-                TotalItems = await _context.Consultants.CountAsync(),
+                TotalItems = await _context.Consultants.Where(p=>nomePesquisar == null || p.Name.Contains(nomePesquisar)).CountAsync(),
                 CurrentPage = page
 
             };
 
             var happyBDayContext = _context.Consultants.Include(c => c.IdDepartmentsNavigation);
-            List<Consultants> consultants = await happyBDayContext
+            List<Consultants> consultants = await happyBDayContext.Where(p => nomePesquisar == null || p.Name.Contains(nomePesquisar))
                 .OrderBy(c => c.Name)
                 .Skip(pagination.PageSize * (page - 1))
                 .Take(pagination.PageSize)
@@ -42,7 +42,8 @@ namespace HappyBDay.Controllers
             ConsultantsListViewModel model = new ConsultantsListViewModel
             {
                 Pagination = pagination,
-                Consultants = consultants
+                Consultants = consultants,
+                NomePesquisar=nomePesquisar
             };
             
             return base.View(model);
