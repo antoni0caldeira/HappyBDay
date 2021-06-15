@@ -114,10 +114,252 @@ namespace HappyBDay.Data
             Departments dep = DbContext.Departments.FirstOrDefault(c => c.Name == "BackEnd Department");
             DbContext.Consultants.AddRange(new Consultants[]
             {
+                //new Consultants
+                //{
+                //    Name = "Bernardo José Costa Sousa",
+                //    Email = "bernardojose.costasousa@altran.com",
+                //    Phone = Convert.ToString(915469887),
+                //    Status = true,
+                //    DateOfBirth = new DateTime(1999, 05, 05),
+                //    ConsultantNumber = 1,
+                //    Gender = "Male",
+                //    IdDepartmentsNavigation = dep,
+                //},
+                //new Consultants
+                //{
+                //    Name = "Luís Henrique Diogo Bernardo",
+                //    Email = "luishenrique.diogobernardo@altran.com",
+                //    Phone = Convert.ToString(915469888),
+                //    Status = true,
+                //    DateOfBirth = new DateTime(1988, 05, 11),
+                //    ConsultantNumber = 1,
+                //    Gender = "Male",
+                //    IdDepartmentsNavigation = dep,
+                //},
+                //new Consultants
+                //{
+                //    Name = "Ricardo Manuel Gonçalves Cabral",
+                //    Email = "ricardomanuel.goncalvescabral@altran.com",
+                //    Phone = Convert.ToString(915469890),
+                //    Status = true,
+                //    DateOfBirth = new DateTime(1995, 05, 11),
+                //    ConsultantNumber = 1,
+                //    Gender = "Male",
+                //    IdDepartmentsNavigation = dep,
+                //},
+                //new Consultants
+                //{
+                //    Name = "Nuno Rafael Gonçalves Fonseca",
+                //    Email = "nunorafael.goncalvesfonseca@altran.com",
+                //    Phone = Convert.ToString(915469587),
+                //    Status = true,
+                //    DateOfBirth = new DateTime(1996, 06, 11),
+                //    ConsultantNumber = 1,
+                //    Gender = "Male",
+                //    IdDepartmentsNavigation = dep,
+                //},
+                //new Consultants
+                //{
+                //    Name = "João Pedro Gouveia Nunes",
+                //    Email = "joaopedro.gouveianunes@altran.com",
+                //    Phone = Convert.ToString(915469444),
+                //    Status = true,
+                //    DateOfBirth = new DateTime(1994, 03, 11),
+                //    ConsultantNumber = 1,
+                //    Gender = "Male",
+                //    IdDepartmentsNavigation = dep,
+                //},
+                //new Consultants
+                //{
+                //    Name = "Vitaliy Hurskyy",
+                //    Email = "vitaliy.hurskyy@altran.com",
+                //    Phone = Convert.ToString(915449444),
+                //    Status = true,
+                //    DateOfBirth = new DateTime(1998, 08, 11),
+                //    ConsultantNumber = 1,
+                //    Gender = "Male",
+                //    IdDepartmentsNavigation = dep,
+                //},
+                //new Consultants
+                //{
+                //    Name = "Pedro Daniel Lourenço Gaspar",
+                //    Email = "pedrodaniel.lourencogaspar@altran.com",
+                //    Phone = Convert.ToString(925449444),
+                //    Status = true,
+                //    DateOfBirth = new DateTime(1992, 08, 11),
+                //    ConsultantNumber = 1,
+                //    Gender = "Male",
+                //    IdDepartmentsNavigation = dep,
+                //},
+                //new Consultants
+                //{
+                //    Name = "António José Machado Caldeira",
+                //    Email = "antoniojose.machadocaldeira@altran.com",
+                //    Phone = Convert.ToString(925549444),
+                //    Status = true,
+                //    DateOfBirth = new DateTime(1970, 08, 11),
+                //    ConsultantNumber = 1,
+                //    Gender = "Male",
+                //    IdDepartmentsNavigation = dep,
+                //},
+                //new Consultants
+                //{
+                //    Name = "Nuno Miguel Mimoso Aniceto",
+                //    Email = "nunomiguel.mimosoaniceto@altran.com",
+                //    Phone = Convert.ToString(925549555),
+                //    Status = true,
+                //    DateOfBirth = new DateTime(1975, 08, 11),
+                //    ConsultantNumber = 1,
+                //    Gender = "Male",
+                //    IdDepartmentsNavigation = dep,
+                //},
+                //new Consultants
+                //{
+                //    Name = "Mariana Sofia Monteiro Santos",
+                //    Email = "marianasofia.monteirosantos@altran.com",
+                //    Phone = Convert.ToString(925544789),
+                //    Status = true,
+                //    DateOfBirth = new DateTime(1993, 04, 11),
+                //    ConsultantNumber = 1,
+                //    Gender = "Female",
+                //    IdDepartmentsNavigation = dep,
+                //},
+                //new Consultants
+                //{
+                //    Name = "Patrícia Moura Gameiro",
+                //    Email = "patricia.mouragameiro@altran.com",
+                //    Phone = Convert.ToString(925544219),
+                //    Status = true,
+                //    DateOfBirth = new DateTime(1996, 11, 11),
+                //    ConsultantNumber = 1,
+                //    Gender = "Female",
+                //    IdDepartmentsNavigation = dep,
+                //},
+                //new Consultants
+                //{
+                //    Name = "André João Rodrigues Saavedra",
+                //    Email = "andrejoao.rodriguessaavedra@altran.com",
+                //    Phone = Convert.ToString(925577219),
+                //    Status = true,
+                //    DateOfBirth = new DateTime(1990, 11, 11),
+                //    ConsultantNumber = 1,
+                //    Gender = "Male",
+                //    IdDepartmentsNavigation = dep,
+                //},
+                //new Consultants
+                //{
+                //    Name = "Nicolau Santos Barranha",
+                //    Email = "nicolau.santosbarranha@altran.com",
+                //    Phone = Convert.ToString(925577219),
+                //    Status = true,
+                //    DateOfBirth = new DateTime(1990, 11, 11),
+                //    ConsultantNumber = 1,
+                //    Gender = "Male",
+                //    IdDepartmentsNavigation = dep,
+                //},
+                //new Consultants
+                //{
+                //    Name = "João Manuel Santos Vieira",
+                //    Email = "joaomanuel.santosvieira@altran.com",
+                //    Phone = Convert.ToString(925469219),
+                //    Status = true,
+                //    DateOfBirth = new DateTime(1994, 02, 11),
+                //    ConsultantNumber = 1,
+                //    Gender = "Male",
+                //    IdDepartmentsNavigation = dep,
+                //},
+                //new Consultants
+                //{
+                //    Name = "David Nunes Petrucci Silva Pinto",
+                //    Email = "davidnunes.silvapinto@altran.com",
+                //    Phone = Convert.ToString(925464719),
+                //    Status = true,
+                //    DateOfBirth = new DateTime(1982, 06, 27),
+                //    ConsultantNumber = 1,
+                //    Gender = "Male",
+                //    IdDepartmentsNavigation = dep,
+                //},
+                //new Consultants
+                //{
+                //    Name = "Bruno Nave",
+                //    Email = "bruno.nave@altran.com",
+                //    Phone = Convert.ToString(931547896),
+                //    Status = true,
+                //    DateOfBirth = new DateTime(1983, 08, 27),
+                //    ConsultantNumber = 1,
+                //    Gender = "Male",
+                //    IdDepartmentsNavigation = dep,
+                //},
+                //new Consultants
+                //{
+                //    Name = "Diogo Miguel Coluna",
+                //    Email = "diogomiguel.coluna@altran.com",
+                //    Phone = Convert.ToString(931547851),
+                //    Status = true,
+                //    DateOfBirth = new DateTime(1980, 10, 02),
+                //    ConsultantNumber = 1,
+                //    Gender = "Male",
+                //    IdDepartmentsNavigation = dep,
+                //},
+                //new Consultants
+                //{
+                //    Name = "Hugo Miguel Prata",
+                //    Email = "hugomiguel.prata@altran.com",
+                //    Phone = Convert.ToString(931547222),
+                //    Status = true,
+                //    DateOfBirth = new DateTime(1977, 03, 08),
+                //    ConsultantNumber = 1,
+                //    Gender = "Male",
+                //    IdDepartmentsNavigation = dep,
+                //},
+                //new Consultants
+                //{
+                //    Name = "Sara Leme",
+                //    Email = "sara.leme@altran.com",
+                //    Phone = Convert.ToString(911478596),
+                //    Status = true,
+                //    DateOfBirth = new DateTime(1986, 02, 01),
+                //    ConsultantNumber = 1,
+                //    Gender = "Female",
+                //    IdDepartmentsNavigation = dep,
+                //},
+                //new Consultants
+                //{
+                //    Name = "Rita Proença",
+                //    Email = "rita.proenca@altran.com",
+                //    Phone = Convert.ToString(921498632),
+                //    Status = true,
+                //    DateOfBirth = new DateTime(1979, 04, 15),
+                //    ConsultantNumber = 1,
+                //    Gender = "Female",
+                //    IdDepartmentsNavigation = dep,
+                //},
+                //new Consultants
+                //{
+                //    Name = "Beatriz Carpinteira Rodrigues",
+                //    Email = "beatriz.carpinteirarodrigues@altran.com",
+                //    Phone = Convert.ToString(924785965),
+                //    Status = true,
+                //    DateOfBirth = new DateTime(1995, 05, 05),
+                //    ConsultantNumber = 1,
+                //    Gender = "Female",
+                //    IdDepartmentsNavigation = dep,
+                //},
+                //new Consultants
+                //{
+                //    Name = "Tânia Patrícia Barata",
+                //    Email = "taniapatricia.barata@altran.com",
+                //    Phone = Convert.ToString(924125595),
+                //    Status = true,
+                //    DateOfBirth = new DateTime(1998, 06, 08),
+                //    ConsultantNumber = 1,
+                //    Gender = "Female",
+                //    IdDepartmentsNavigation = dep,
+                //},
                 new Consultants
                 {
                     Name = "Bernardo José Costa Sousa",
-                    Email = "bernardojose.costasousa@altran.com",
+                    Email = "uptelautomated@gmail.com",
                     Phone = Convert.ToString(915469887),
                     Status = true,
                     DateOfBirth = new DateTime(1999, 05, 05),
@@ -128,7 +370,7 @@ namespace HappyBDay.Data
                 new Consultants
                 {
                     Name = "Luís Henrique Diogo Bernardo",
-                    Email = "luishenrique.diogobernardo@altran.com",
+                    Email = "uptelautomated@gmail.com",
                     Phone = Convert.ToString(915469888),
                     Status = true,
                     DateOfBirth = new DateTime(1988, 05, 11),
@@ -139,7 +381,7 @@ namespace HappyBDay.Data
                 new Consultants
                 {
                     Name = "Ricardo Manuel Gonçalves Cabral",
-                    Email = "ricardomanuel.goncalvescabral@altran.com",
+                    Email = "uptelautomated@gmail.com",
                     Phone = Convert.ToString(915469890),
                     Status = true,
                     DateOfBirth = new DateTime(1995, 05, 11),
@@ -150,7 +392,7 @@ namespace HappyBDay.Data
                 new Consultants
                 {
                     Name = "Nuno Rafael Gonçalves Fonseca",
-                    Email = "nunorafael.goncalvesfonseca@altran.com",
+                    Email = "uptelautomated@gmail.com",
                     Phone = Convert.ToString(915469587),
                     Status = true,
                     DateOfBirth = new DateTime(1996, 06, 11),
@@ -161,7 +403,7 @@ namespace HappyBDay.Data
                 new Consultants
                 {
                     Name = "João Pedro Gouveia Nunes",
-                    Email = "joaopedro.gouveianunes@altran.com",
+                    Email = "uptelautomated@gmail.com",
                     Phone = Convert.ToString(915469444),
                     Status = true,
                     DateOfBirth = new DateTime(1994, 03, 11),
@@ -172,7 +414,7 @@ namespace HappyBDay.Data
                 new Consultants
                 {
                     Name = "Vitaliy Hurskyy",
-                    Email = "vitaliy.hurskyy@altran.com",
+                    Email = "uptelautomated@gmail.com",
                     Phone = Convert.ToString(915449444),
                     Status = true,
                     DateOfBirth = new DateTime(1998, 08, 11),
@@ -183,7 +425,7 @@ namespace HappyBDay.Data
                 new Consultants
                 {
                     Name = "Pedro Daniel Lourenço Gaspar",
-                    Email = "pedrodaniel.lourencogaspar@altran.com",
+                    Email = "uptelautomated@gmail.com",
                     Phone = Convert.ToString(925449444),
                     Status = true,
                     DateOfBirth = new DateTime(1992, 08, 11),
@@ -194,7 +436,7 @@ namespace HappyBDay.Data
                 new Consultants
                 {
                     Name = "António José Machado Caldeira",
-                    Email = "antoniojose.machadocaldeira@altran.com",
+                    Email = "uptelautomated@gmail.com",
                     Phone = Convert.ToString(925549444),
                     Status = true,
                     DateOfBirth = new DateTime(1970, 08, 11),
@@ -205,7 +447,7 @@ namespace HappyBDay.Data
                 new Consultants
                 {
                     Name = "Nuno Miguel Mimoso Aniceto",
-                    Email = "nunomiguel.mimosoaniceto@altran.com",
+                    Email = "uptelautomated@gmail.com",
                     Phone = Convert.ToString(925549555),
                     Status = true,
                     DateOfBirth = new DateTime(1975, 08, 11),
@@ -216,7 +458,7 @@ namespace HappyBDay.Data
                 new Consultants
                 {
                     Name = "Mariana Sofia Monteiro Santos",
-                    Email = "marianasofia.monteirosantos@altran.com",
+                    Email = "uptelautomated@gmail.com",
                     Phone = Convert.ToString(925544789),
                     Status = true,
                     DateOfBirth = new DateTime(1993, 04, 11),
@@ -227,7 +469,7 @@ namespace HappyBDay.Data
                 new Consultants
                 {
                     Name = "Patrícia Moura Gameiro",
-                    Email = "patricia.mouragameiro@altran.com",
+                    Email = "uptelautomated@gmail.com",
                     Phone = Convert.ToString(925544219),
                     Status = true,
                     DateOfBirth = new DateTime(1996, 11, 11),
@@ -238,7 +480,7 @@ namespace HappyBDay.Data
                 new Consultants
                 {
                     Name = "André João Rodrigues Saavedra",
-                    Email = "andrejoao.rodriguessaavedra@altran.com",
+                    Email = "uptelautomated@gmail.com",
                     Phone = Convert.ToString(925577219),
                     Status = true,
                     DateOfBirth = new DateTime(1990, 11, 11),
@@ -249,7 +491,7 @@ namespace HappyBDay.Data
                 new Consultants
                 {
                     Name = "Nicolau Santos Barranha",
-                    Email = "nicolau.santosbarranha@altran.com",
+                    Email = "uptelautomated@gmail.com",
                     Phone = Convert.ToString(925577219),
                     Status = true,
                     DateOfBirth = new DateTime(1990, 11, 11),
@@ -260,7 +502,7 @@ namespace HappyBDay.Data
                 new Consultants
                 {
                     Name = "João Manuel Santos Vieira",
-                    Email = "joaomanuel.santosvieira@altran.com",
+                    Email = "uptelautomated@gmail.com",
                     Phone = Convert.ToString(925469219),
                     Status = true,
                     DateOfBirth = new DateTime(1994, 02, 11),
@@ -271,7 +513,7 @@ namespace HappyBDay.Data
                 new Consultants
                 {
                     Name = "David Nunes Petrucci Silva Pinto",
-                    Email = "davidnunes.silvapinto@altran.com",
+                    Email = "uptelautomated@gmail.com",
                     Phone = Convert.ToString(925464719),
                     Status = true,
                     DateOfBirth = new DateTime(1982, 06, 27),
@@ -282,7 +524,7 @@ namespace HappyBDay.Data
                 new Consultants
                 {
                     Name = "Bruno Nave",
-                    Email = "bruno.nave@altran.com",
+                    Email = "uptelautomated@gmail.com",
                     Phone = Convert.ToString(931547896),
                     Status = true,
                     DateOfBirth = new DateTime(1983, 08, 27),
@@ -293,7 +535,7 @@ namespace HappyBDay.Data
                 new Consultants
                 {
                     Name = "Diogo Miguel Coluna",
-                    Email = "diogomiguel.coluna@altran.com",
+                    Email = "uptelautomated@gmail.com",
                     Phone = Convert.ToString(931547851),
                     Status = true,
                     DateOfBirth = new DateTime(1980, 10, 02),
@@ -304,7 +546,7 @@ namespace HappyBDay.Data
                 new Consultants
                 {
                     Name = "Hugo Miguel Prata",
-                    Email = "hugomiguel.prata@altran.com",
+                    Email = "uptelautomated@gmail.com",
                     Phone = Convert.ToString(931547222),
                     Status = true,
                     DateOfBirth = new DateTime(1977, 03, 08),
@@ -315,7 +557,7 @@ namespace HappyBDay.Data
                 new Consultants
                 {
                     Name = "Sara Leme",
-                    Email = "sara.leme@altran.com",
+                    Email = "uptelautomated@gmail.com",
                     Phone = Convert.ToString(911478596),
                     Status = true,
                     DateOfBirth = new DateTime(1986, 02, 01),
@@ -326,7 +568,7 @@ namespace HappyBDay.Data
                 new Consultants
                 {
                     Name = "Rita Proença",
-                    Email = "rita.proenca@altran.com",
+                    Email = "uptelautomated@gmail.com",
                     Phone = Convert.ToString(921498632),
                     Status = true,
                     DateOfBirth = new DateTime(1979, 04, 15),
@@ -337,7 +579,7 @@ namespace HappyBDay.Data
                 new Consultants
                 {
                     Name = "Beatriz Carpinteira Rodrigues",
-                    Email = "beatriz.carpinteirarodrigues@altran.com",
+                    Email = "uptelautomated@gmail.com",
                     Phone = Convert.ToString(924785965),
                     Status = true,
                     DateOfBirth = new DateTime(1995, 05, 05),
@@ -348,7 +590,7 @@ namespace HappyBDay.Data
                 new Consultants
                 {
                     Name = "Tânia Patrícia Barata",
-                    Email = "taniapatricia.barata@altran.com",
+                    Email = "uptelautomated@gmail.com",
                     Phone = Convert.ToString(924125595),
                     Status = true,
                     DateOfBirth = new DateTime(1998, 06, 08),
