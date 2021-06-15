@@ -21,10 +21,31 @@ namespace HappyBDay.Controllers
         }
 
         // GET: Consultants
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int page = 1)
         {
+
+            Pagination pagination = new Pagination
+            {
+                
+                TotalItems = await _context.Consultants.CountAsync(),
+                CurrentPage = page
+
+            };
+
             var happyBDayContext = _context.Consultants.Include(c => c.IdDepartmentsNavigation);
-            return View(await happyBDayContext.ToListAsync());
+            List<Consultants> consultants = await happyBDayContext
+                .OrderBy(c => c.Name)
+                .Skip(pagination.PageSize * (page -1))
+                .Take(pagination.PageSize)
+                .ToListAsync();
+
+            ConsultantsListViewModel model = new ConsultantsListViewModel
+            {
+                Pagination = pagination,
+                Consultants = consultants
+            };
+            
+            return base.View(model);
         }
 
         // GET: Consultants/Details/5
