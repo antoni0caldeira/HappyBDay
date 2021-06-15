@@ -35,7 +35,7 @@ namespace HappyBDay.Controllers
             var happyBDayContext = _context.Consultants.Include(c => c.IdDepartmentsNavigation);
             List<Consultants> consultants = await happyBDayContext
                 .OrderBy(c => c.Name)
-                .Skip(pagination.PageSize * (page -1))
+                .Skip(pagination.PageSize * (page - 1))
                 .Take(pagination.PageSize)
                 .ToListAsync();
 

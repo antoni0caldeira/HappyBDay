@@ -19,10 +19,10 @@
                     <thead style="color: #0070AC">
                         <tr>
                             <th>
-                                @Html.DisplayFor(model => model.Consultants[0].Name)
+                                Name
                             </th>
                             <th>
-                                Email
+                                E-mail
                             </th>
                             <th>
                                 Phone
@@ -31,16 +31,16 @@
                                 Status
                             </th>
                             <th>
-                                @Html.DisplayFor(model => model.Consultants[0].DateOfBirth)
+                                Date of Birthday
                             </th>
                             <th>
-                                ConsultantNumber
+                                Consultant Number
                             </th>
                             <th>
                                 Gender
                             </th>
                             <th>
-                                @Html.DisplayNameFor(model => model.Consultants[0].IdDepartmentsNavigation)
+                                Department
                             </th>
                             <th></th>
                         </tr>
@@ -103,18 +103,18 @@
 
 
                 <li class="page-item @(Model.Pagination.CurrentPage == 1 ? "disabled" : "")">
-                    <a class="page-link text-black-50 border-info" asp-action="Index" asp-route-pagina="1">First</a>
+                    <a class="page-link text-black-50 border-info" asp-action="Index" asp-route-page="1">First</a>
                 </li>
 
                 @for (int i = initialPage; i <= finalPage; i++)
                 {
                     <li class="page-item @(Model.Pagination.CurrentPage == i ? "active" : "")">
-                        <a class="page-link text-black-50 border-info" asp-action="Index" asp-route-pagina="@i">@i</a>
+                        <a class="page-link text-black-50 border-info" asp-action="Index" asp-route-page="@i">@i</a>
                     </li>
                 }
 
                 <li class="page-item @(Model.Pagination.CurrentPage == Model.Pagination.TotalPages ? "disabled" : "")">
-                    <a class="page-link text-black-50 border-info" asp-action="Index" asp-route-pagina="@Model.Pagination.TotalPages">Last</a>
+                    <a class="page-link text-black-50 border-info" asp-action="Index" asp-route-page="@Model.Pagination.TotalPages">Last</a>
                 </li>
 
             </ul>
