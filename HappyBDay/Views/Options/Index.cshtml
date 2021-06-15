@@ -1,48 +1,74 @@
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
+@{ Layout = "../shared/_Layout - OptionsIndex.cshtml"; }
+
+
+
 <section class="content-section bg-primary text-white text-center" id="services">
+    <div class="container">
+        <div class="d-flex justify-content-end fixed-top">
+        
+            <div class="col-md-7">
+            </div>
+            <div class="col-md-3">
+                <a style="text-decoration-color:white" class="nav-link text-white" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @User.Identity.Name!</a>
+            </div>
+            <div class="col-md-1">
+                <form class="form-inline text-white" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+                    <button type="submit" class="nav-link btn btn-link text-white">Logout</button>
+                </form>
+            </div>
+            <div class="col-md-1">
+            </div>
+        </div>
+    </div>
+    
     <div class="container px-4 px-lg-5">
         <div class="content-section-heading mb-4">
             <h2 class="text-secondary mb-4">It's Happy Birthday time!</h2>
             <h3 class="mb-4">Let's send some congratulation e-mails...</h3>
             <a type="button" class="btn btn-secondary btn-lg mt-4 mb-5" href="#!">Send Emails</a>
-            <hr/>
-            
+            <hr />
+
 
         </div>
         <div class="row gx-4 gx-lg-5">
             <h3 class="text-secondary mt-5 mb-5">Other options</h3>
-            
-                <div class="col-lg-3 col-md-6 mt-5 mb-5 mb-lg-0">
-                    
-                        <a style="text-decoration:none; color:white" asp-area="" asp-controller="Users" asp-action="Index">
-                            <span class="service-icon rounded-circle mx-auto mb-3"><i class="fas fa-id-badge"></i></span>
-                            <h3><strong>Users</strong></h3>
-                        </a>
-                    
-                </div>
-                <div class="col-lg-3 col-md-6 mt-5 mb-5 mb-lg-0">
-                    <a style="text-decoration:none; color:white" asp-area="" asp-controller="Departments" asp-action="Index">
-                        <span class="service-icon rounded-circle mx-auto mb-3"><i class="fas fa-building"></i></span>
-                        <h3><strong>Departments</strong></h3>
-                    </a>
 
-                </div>
-                <div class="col-lg-3 col-md-6 mt-5 mb-5 mb-md-0">
-                    <a style="text-decoration:none; color:white" asp-area="" asp-controller="Consultants" asp-action="Index">
-                        <span class="service-icon rounded-circle mx-auto mb-3"><i class="fas fa-users"></i></span>
-                        <h3><strong>Consultants</strong></h3>
-                    </a>
+            <div class="col-lg-3 col-md-6 mt-5 mb-5 mb-lg-0">
 
-                </div>
-                <div class="col-lg-3 mt-5 col-md-6">
-                    <a style="text-decoration:none; color:white" asp-area="" asp-controller="Profile" asp-action="Index">
-                        <span class="service-icon rounded-circle mx-auto mb-3"><i class="fas fa-id-card"></i></span>
-                        <h3><strong>Profiles</strong></h3>
-                    </a>
+                <a style="text-decoration:none; color:white" asp-area="" asp-controller="Users" asp-action="Index">
+                    <span class="service-icon rounded-circle mx-auto mb-3"><i class="fas fa-id-badge"></i></span>
+                    <h3><strong>Users</strong></h3>
+                </a>
 
-                </div>
-            
+            </div>
+            <div class="col-lg-3 col-md-6 mt-5 mb-5 mb-lg-0">
+                <a style="text-decoration:none; color:white" asp-area="" asp-controller="Departments" asp-action="Index">
+                    <span class="service-icon rounded-circle mx-auto mb-3"><i class="fas fa-building"></i></span>
+                    <h3><strong>Departments</strong></h3>
+                </a>
+
+            </div>
+            <div class="col-lg-3 col-md-6 mt-5 mb-5 mb-md-0">
+                <a style="text-decoration:none; color:white" asp-area="" asp-controller="Consultants" asp-action="Index">
+                    <span class="service-icon rounded-circle mx-auto mb-3"><i class="fas fa-users"></i></span>
+                    <h3><strong>Consultants</strong></h3>
+                </a>
+
+            </div>
+            <div class="col-lg-3 mt-5 col-md-6">
+                <a style="text-decoration:none; color:white" asp-area="" asp-controller="Profile" asp-action="Index">
+                    <span class="service-icon rounded-circle mx-auto mb-3"><i class="fas fa-id-card"></i></span>
+                    <h3><strong>Profiles</strong></h3>
+                </a>
+
+            </div>
+
         </div>
     </div>
 </section>
-<section class="content-section bg-primary">
-    </section>
+        <section class="content-section bg-primary">
+        </section>

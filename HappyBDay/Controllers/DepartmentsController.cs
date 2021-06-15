@@ -141,10 +141,25 @@ namespace HappyBDay.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var departments = await _context.Departments.FindAsync(id);
-            _context.Departments.Remove(departments);
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            
+                var departments = await _context.Departments.FindAsync(id);
+            try
+            {
+                _context.Departments.Remove(departments);
+                await _context.SaveChangesAsync();
+            }
+            catch (Exception)
+            {
+                if(_context.Consultants.Any(c => c.IdDepartments == departments.Id))
+                {
+                    ViewBag.Mensage = $"The Department can't be deleted, because there are Consultants in that department";
+                    
+                }
+                return View("Error");
+            }
+                return RedirectToAction(nameof(Index));
+            
+            
         }
 
         private bool DepartmentsExists(int id)
