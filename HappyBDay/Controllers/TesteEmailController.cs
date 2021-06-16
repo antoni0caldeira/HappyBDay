@@ -1,17 +1,25 @@
-﻿using HappyBDay.Models;
+﻿
+using HappyBDay.Models;
 using HappyBDay.Services;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
+using HappyBDay.Data;
+using Microsoft.EntityFrameworkCore;
+using System.Linq;
+
 namespace HappyBDay.Controllers
 {
     public class TesteEmailController : Controller
     {
         private readonly IEmailSender _emailSender;
-        public TesteEmailController(IEmailSender emailSender, IWebHostEnvironment env)
+        private readonly HappyBDayContext _db;
+        public TesteEmailController(IEmailSender emailSender, IWebHostEnvironment env, HappyBDayContext db)
         {
             _emailSender = emailSender;
+            _db = db;
         }
         public IActionResult EnviaEmail()
         {
@@ -36,15 +44,32 @@ namespace HappyBDay.Controllers
         }
         public async Task TesteEnvioEmail(string email, string assunto, string mensagem)
         {
-            try
+
+
+            foreach (var item in _db.Consultants.ToList())
             {
-                //email destino, assunto do email, mensagem a enviar
-                await _emailSender.SendEmailAsync(email, assunto, mensagem);
+                DateTime today = DateTime.Today;
+
+                List<Consultants> birthday = await _db.Consultants.Where(c => (c.DateOfBirth.Month == today.Month) && (c.DateOfBirth.Day == today.Day)).ToListAsync();
+
+                foreach (var ser in birthday)
+                {
+                    var name = await _db.Consultants.FirstOrDefaultAsync(c => c.Name == ser.Name);
+                    assunto = "Happy Birthday " + name;
+                    mensagem = "Happy Birthday and the best wishes from all of us. Enjoy your day.";
+                }
+
+                try
+                {
+                    //email destino, assunto do email, mensagem a enviar
+                    await _emailSender.SendEmailAsync(email, assunto, mensagem);
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
             }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
+          
         }
         public ActionResult EmailEnviado()
         {
