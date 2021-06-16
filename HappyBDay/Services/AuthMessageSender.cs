@@ -35,7 +35,7 @@ namespace HappyBDay.Services
 
                 MailMessage mail = new MailMessage()
                 {
-                    From = new MailAddress("uptelautomated@gmail.com","Uptel")
+                    From = new MailAddress("Happybday.Cap2021@gmail.com", "Uptel")
                 };
 
                 mail.To.Add(new MailAddress(toEmail));
@@ -52,7 +52,7 @@ namespace HappyBDay.Services
 
                 using (SmtpClient smtp = new SmtpClient("smtp.gmail.com", 587))
                 {
-                    smtp.Credentials = new NetworkCredential("uptelautomated@gmail,com", "Secret123$");
+                    smtp.Credentials = new NetworkCredential("Happybday.Cap2021@gmail.com", "Qwerty#123");
                     smtp.EnableSsl = true;
                     await smtp.SendMailAsync(mail);
                 }

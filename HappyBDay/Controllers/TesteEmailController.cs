@@ -9,7 +9,7 @@ namespace HappyBDay.Controllers
     public class TesteEmailController : Controller
     {
         private readonly IEmailSender _emailSender;
-        public TesteEmailController(IEmailSender emailSender, IHostingEnvironment env)
+        public TesteEmailController(IEmailSender emailSender, IWebHostEnvironment env)
         {
             _emailSender = emailSender;
         }
