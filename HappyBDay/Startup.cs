@@ -1,4 +1,5 @@
 using HappyBDay.Data;
+using HappyBDay.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -42,6 +43,9 @@ namespace HappyBDay
                 .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddDefaultUI();
 
+            services.Configure<EmailSettings>(Configuration.GetSection("EmailSettings"));
+            services.AddTransient<IEmailSender, AuthMessageSender>();
+            services.AddMvc();
 
             services.AddControllersWithViews();
         }
