@@ -25,51 +25,54 @@ namespace HappyBDay.Controllers
         {
             return View();
         }
-        [HttpPost]
-        public IActionResult EnviaEmail(EmailModel email)
+        //[HttpPost]
+        //public IActionResult EnviaEmail(EmailModel email)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        try
+        //        {
+        //            TesteEnvioEmail(email.Destino, email.Assunto, email.Mensagem).GetAwaiter();
+        //            return RedirectToAction("EmailEnviado");
+        //        }
+        //        catch (Exception)
+        //        {
+        //            return RedirectToAction("EmailFalhou");
+        //        }
+        //    }
+        //    return View(email);
+        //}
+        public async Task<IActionResult> TesteEnvioEmail()
         {
-            if (ModelState.IsValid)
-            {
-                try
+
+            string email; string assunto; string mensagem;
+            
+            DateTime today = DateTime.Today;
+
+            List<Consultants> birthday = await _db.Consultants.Where(c => (c.DateOfBirth.Month == today.Month) && (c.DateOfBirth.Day == today.Day)).ToListAsync();
+               
+            foreach (var ser in birthday)
                 {
-                    TesteEnvioEmail(email.Destino, email.Assunto, email.Mensagem).GetAwaiter();
-                    return RedirectToAction("EmailEnviado");
-                }
-                catch (Exception)
-                {
-                    return RedirectToAction("EmailFalhou");
-                }
-            }
-            return View(email);
-        }
-        public async Task TesteEnvioEmail(string email, string assunto, string mensagem)
-        {
-
-
-            foreach (var item in _db.Consultants.ToList())
-            {
-                DateTime today = DateTime.Today;
-
-                List<Consultants> birthday = await _db.Consultants.Where(c => (c.DateOfBirth.Month == today.Month) && (c.DateOfBirth.Day == today.Day)).ToListAsync();
-
-                foreach (var ser in birthday)
-                {
+                    var consultant = await _db.Consultants.FirstOrDefaultAsync(c=> c.Email==ser.Email);
                     var name = await _db.Consultants.FirstOrDefaultAsync(c => c.Name == ser.Name);
-                    assunto = "Happy Birthday " + name;
+                    email = consultant.Email;
+                    assunto = "Happy Birthday " + name.Name;
                     mensagem = "Happy Birthday and the best wishes from all of us. Enjoy your day.";
-                }
 
-                try
-                {
-                    //email destino, assunto do email, mensagem a enviar
-                    await _emailSender.SendEmailAsync(email, assunto, mensagem);
+                    try
+                    {
+                        //email destino, assunto do email, mensagem a enviar
+                        await _emailSender.SendEmailAsync(email, assunto, mensagem);
+                    }
+                    catch (Exception)
+                    {
+                        return RedirectToAction("EmailFalhou");
+                    }
+                   
                 }
-                catch (Exception ex)
-                {
-                    throw ex;
-                }
-            }
-          
+               
+           
+            return RedirectToAction("EmailEnviado");
         }
         public ActionResult EmailEnviado()
         {

@@ -35,7 +35,7 @@ namespace HappyBDay.Services
 
                 MailMessage mail = new MailMessage()
                 {
-                    From = new MailAddress("Happybday.Cap2021@gmail.com", "Uptel")
+                    From = new MailAddress("Happybday.Cap2021@gmail.com", "Capgemini Engineering")
                 };
 
                 mail.To.Add(new MailAddress(toEmail));
