@@ -12,7 +12,7 @@ using Microsoft.AspNetCore.Identity;
 
 namespace HappyBDay.Controllers
 {
-    [Authorize]
+    [Authorize(Roles = "Admin")]
     public class UsersController : Controller
     {
         private readonly HappyBDayContext _context;

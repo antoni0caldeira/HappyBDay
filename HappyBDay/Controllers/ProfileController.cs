@@ -11,7 +11,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace HappyBDay.Controllers
 {
-    [Authorize]
+    [Authorize(Roles = "Admin")]
     public class ProfileController : Controller
     {
         private readonly HappyBDayContext _context;
