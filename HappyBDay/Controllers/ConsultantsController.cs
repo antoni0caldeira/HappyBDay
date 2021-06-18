@@ -24,17 +24,16 @@ namespace HappyBDay.Controllers
         // GET: Consultants
         public async Task<IActionResult> Index(string nomePesquisar, int page = 1)
         {
-
             Pagination pagination = new Pagination
             {
                 
-                TotalItems = await _context.Consultants.Where(p=> p.Status.Equals(true) && nomePesquisar == null || p.Name.Contains(nomePesquisar)).CountAsync(),
+                TotalItems = await _context.Consultants.Where(p=> p.Status.Equals(true) && nomePesquisar == null || p.Name.Contains(nomePesquisar)|| p.ConsultantNumber.Contains(nomePesquisar)).CountAsync(),
                 CurrentPage = page
 
             };
 
             var happyBDayContext = _context.Consultants.Include(c => c.IdDepartmentsNavigation);
-            List<Consultants> consultants = await happyBDayContext.Where(p => p.Status.Equals(true) && nomePesquisar == null || p.Name.Contains(nomePesquisar))
+            List<Consultants> consultants = await happyBDayContext.Where(p => p.Status.Equals(true) && nomePesquisar == null || p.Name.Contains(nomePesquisar) || p.ConsultantNumber.Contains(nomePesquisar))
                 .OrderBy(c => c.Name)
                 .Skip(pagination.PageSize * (page - 1))
                 .Take(pagination.PageSize)
