@@ -1,8 +1,10 @@
 ﻿using Microsoft.Extensions.Options;
 using System;
+using System.IO;
 using System.Net;
 using System.Net.Mail;
 using System.Threading.Tasks;
+
 namespace HappyBDay.Services
 {
     public class AuthMessageSender : IEmailSender
@@ -16,6 +18,8 @@ namespace HappyBDay.Services
 
         public Task SendEmailAsync(string email, string subject, string message)
         {
+            
+
             try
             {
                 Execute(email, subject, message).Wait();
@@ -29,6 +33,8 @@ namespace HappyBDay.Services
 
         public async Task Execute(string email, string subject, string message)
         {
+            
+
             try
             {
                 string toEmail = string.IsNullOrEmpty(email) ? _emailSettings.ToEmail : email;
