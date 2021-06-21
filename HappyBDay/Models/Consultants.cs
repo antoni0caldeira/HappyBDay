@@ -38,7 +38,8 @@ namespace HappyBDay.Models
 
         [Column("Consultant_Number")]
         [Display(Name = "Consultant Number")]
-        public int ConsultantNumber { get; set; }
+        [RegularExpression(@"\d{8}",ErrorMessage ="Invalid value")]
+        public string ConsultantNumber { get; set; }
 
         [StringLength(12)]
         public string Gender { get; set; }
