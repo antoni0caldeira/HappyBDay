@@ -22,6 +22,8 @@ namespace HappyBDay.Models
         [StringLength(256)]
         public string Email { get; set; }
 
+        public bool Status { get; set; }
+
 
         [Required(ErrorMessage = "Required field.")]
         [StringLength(256)]

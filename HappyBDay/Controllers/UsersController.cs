@@ -126,7 +126,7 @@ namespace HappyBDay.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Username,Email,IdProfile")] Users users)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Username,Email,IdProfile,Status")] Users users)
         {
             if (id != users.Id)
             {
