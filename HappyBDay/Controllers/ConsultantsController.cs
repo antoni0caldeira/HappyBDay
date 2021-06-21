@@ -24,17 +24,16 @@ namespace HappyBDay.Controllers
         // GET: Consultants
         public async Task<IActionResult> Index(string nomePesquisar, int page = 1)
         {
-
             Pagination pagination = new Pagination
             {
                 
-                TotalItems = await _context.Consultants.Where(p=> p.Status.Equals(true) && nomePesquisar == null || p.Name.Contains(nomePesquisar)).CountAsync(),
+                TotalItems = await _context.Consultants.Where(p=> p.Status.Equals(true) && nomePesquisar == null || p.Name.Contains(nomePesquisar)|| p.ConsultantNumber.Contains(nomePesquisar)).CountAsync(),
                 CurrentPage = page
 
             };
 
             var happyBDayContext = _context.Consultants.Include(c => c.IdDepartmentsNavigation);
-            List<Consultants> consultants = await happyBDayContext.Where(p => p.Status.Equals(true) && nomePesquisar == null || p.Name.Contains(nomePesquisar))
+            List<Consultants> consultants = await happyBDayContext.Where(p => p.Status.Equals(true) && nomePesquisar == null || p.Name.Contains(nomePesquisar) || p.ConsultantNumber.Contains(nomePesquisar))
                 .OrderBy(c => c.Name)
                 .Skip(pagination.PageSize * (page - 1))
                 .Take(pagination.PageSize)
@@ -63,6 +62,74 @@ namespace HappyBDay.Controllers
 
             var happyBDayContext = _context.Consultants.Include(c => c.IdDepartmentsNavigation);
             List<Consultants> consultants = await happyBDayContext.Where(p => p.Status.Equals(false) && nomePesquisar == null || p.Name.Contains(nomePesquisar))
+                .OrderBy(c => c.Name)
+                .Skip(pagination.PageSize * (page - 1))
+                .Take(pagination.PageSize)
+                .ToListAsync();
+
+            ConsultantsListViewModel model = new ConsultantsListViewModel
+            {
+                Pagination = pagination,
+                Consultants = consultants,
+                NomePesquisar = nomePesquisar
+            };
+
+            return base.View(model);
+        }
+
+        //SABER QUEM FAZ ANOS NESTE MÊS
+        public async Task<IActionResult> IndexMonth(string nomePesquisar, int page = 1)
+        {
+
+            Pagination pagination = new Pagination
+            {
+
+                TotalItems = await _context.Consultants.Where(p => p.Status.Equals(true) && nomePesquisar == null || p.Name.Contains(nomePesquisar)).CountAsync(),
+                CurrentPage = page
+
+            };
+
+            DateTime today = DateTime.Today;
+            var dia1 = new DateTime(today.Year, today.Month, 1);
+            DateTime finaldia = dia1.AddMonths(1).AddMinutes(-1);
+            
+            var happyBDayContext = _context.Consultants.Include(c => c.IdDepartmentsNavigation);
+            List<Consultants> consultants = await happyBDayContext.Where(c => (c.DateOfBirth.Month >= dia1.Month  && c.DateOfBirth.Month <= finaldia.Month))
+
+                .Where(c => c.Status.Equals(true) && nomePesquisar == null || c.Name.Contains(nomePesquisar))
+                .OrderBy(c => c.Name)
+                .Skip(pagination.PageSize * (page - 1))
+                .Take(pagination.PageSize)
+                .ToListAsync();
+
+            ConsultantsListViewModel model = new ConsultantsListViewModel
+            {
+                Pagination = pagination,
+                Consultants = consultants,
+                NomePesquisar = nomePesquisar
+            };
+
+            return base.View(model);
+        }
+
+        //SABER QUEM FAZ ANOS NESTE DIA
+        public async Task<IActionResult> IndexDay(string nomePesquisar, int page = 1)
+        {
+
+            Pagination pagination = new Pagination
+            {
+
+                TotalItems = await _context.Consultants.Where(p => p.Status.Equals(true) && nomePesquisar == null || p.Name.Contains(nomePesquisar)).CountAsync(),
+                CurrentPage = page
+
+            };
+
+            DateTime today = DateTime.Today;
+
+            var happyBDayContext = _context.Consultants.Include(c => c.IdDepartmentsNavigation);
+            List<Consultants> consultants = await happyBDayContext.Where(c => (c.DateOfBirth.Month == today.Month) && (c.DateOfBirth.Day == today.Day))
+
+                .Where(c => c.Status.Equals(true) && nomePesquisar == null || c.Name.Contains(nomePesquisar))
                 .OrderBy(c => c.Name)
                 .Skip(pagination.PageSize * (page - 1))
                 .Take(pagination.PageSize)

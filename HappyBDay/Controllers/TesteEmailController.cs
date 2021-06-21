@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using HappyBDay.Data;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
+using System.IO;
 
 namespace HappyBDay.Controllers
 {
@@ -45,7 +46,7 @@ namespace HappyBDay.Controllers
         public async Task<IActionResult> TesteEnvioEmail()
         {
 
-            string email; string assunto; string mensagem;
+            string email; string assunto;
             
             DateTime today = DateTime.Today;
 
@@ -53,13 +54,21 @@ namespace HappyBDay.Controllers
                
             foreach (var ser in birthday)
                 {
-                    var consultant = await _db.Consultants.FirstOrDefaultAsync(c=> c.Email==ser.Email);
+                
+
+                var consultant = await _db.Consultants.FirstOrDefaultAsync(c=> c.Email==ser.Email);
                     var name = await _db.Consultants.FirstOrDefaultAsync(c => c.Name == ser.Name);
                     email = consultant.Email;
                     assunto = "Happy Birthday " + name.Name;
-                    mensagem = "Happy Birthday and the best wishes from all of us. Enjoy your day.";
 
-                    try
+                    //Mensagem
+                    string FilePath = "C:/Users/ldiogobe/source/repos/HappyBDay/HappyBDay/EmailTemplates/TemplateEmail.html";
+                    StreamReader str = new StreamReader(FilePath);
+                    string mensagem = str.ReadToEnd();
+                    str.Close();
+
+
+                try
                     {
                         //email destino, assunto do email, mensagem a enviar
                         await _emailSender.SendEmailAsync(email, assunto, mensagem);
