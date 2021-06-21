@@ -1,0 +1,113 @@
+﻿@model SelectDayViewModel
+
+@{
+    ViewData["Title"] = "Select Day";
+}
+<section class="content-section bg-light" id="about">
+    <div class="container px-4 px-lg-5 text-center">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+
+            <h1 class="mb-5" style="color: #0070AC">Select specific Day and Month</h1>
+
+            <div class="card border-info mb-4">
+                <div class="card-body">
+                    <div class="col-md">
+                        <form asp-action="SelectDay" method="get">
+                            <div class="form-group justify-content-between">
+                                <div class="row">
+                                    <div class="col">
+                                        <label for="Day" class="control-label">Choose the Day</label>
+                                        <select asp-for="Day" class="custom-select">
+                                            <option selected></option>
+                                            @for (int i = 1; i <= 31; i++)
+                                            {
+                                                <option value="@i">@i</option>
+                                            }
+                                        </select>
+                                    </div>
+                                    <div class="col">
+                                        <label for="Month" class="control-label">Choose the Month</label>
+                                        <select asp-for="Month" class="custom-select">
+                                            <option selected></option>
+                                            <option value="1">January</option>
+                                            <option value="2">February</option>
+                                            <option value="3">March</option>
+                                            <option value="4">April</option>
+                                            <option value="5">May</option>
+                                            <option value="6">June</option>
+                                            <option value="7">July</option>
+                                            <option value="8">August</option>
+                                            <option value="9">September</option>
+                                            <option value="10">October</option>
+                                            <option value="11">November</option>
+                                            <option value="12">Dezember</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                                    <div class="form-group mt-5">
+                                        <input type="submit" values="Search" class="btn btn-primary" />
+                                        <a asp-action="SelectDay" class="btn btn-secondary">Clean</a>
+                                    </div>
+                        </form>
+                    </div>
+            </div>
+        </div>
+
+
+            @if (Model.Consultants.Count() > 0)
+            {
+
+                <table class="table">
+                    <thead style="color: #0070AC">
+                        <tr>
+                            <th>
+                                Name
+                            </th>
+                           
+                            <th>
+                                Status
+                            </th>
+                            <th>
+                                Date of Birthday
+                            </th>
+                           
+                            <th>
+                                Department
+                            </th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.Consultants)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Name)
+                                </td>
+                                
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Status)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.DateOfBirth)
+                                </td>
+                                
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.IdDepartmentsNavigation.Name)
+                                </td>
+                                <td>
+                                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> 
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            }
+
+        </div>
+
+
+    </div>
+
+</section>
