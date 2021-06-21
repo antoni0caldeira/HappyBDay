@@ -49,6 +49,30 @@ namespace HappyBDay.Controllers
             return base.View(model);
         }
 
+        //SABER QUEM FAZ ANOS NUM DIA ESPECÍFICO
+
+        public async Task<IActionResult> SelectDay(int day, int month)
+        {
+
+
+            var happyBDayContext = _context.Consultants.Include(c => c.IdDepartmentsNavigation);
+
+
+            List<Consultants> consultants = await happyBDayContext.Where(p => p.Status.Equals(true) && (p.DateOfBirth.Day == day) && (p.DateOfBirth.Month == month))
+                .ToListAsync();
+
+            SelectDayViewModel model = new SelectDayViewModel
+            {
+                Consultants = consultants,
+                Day = day,
+                Month = month
+            };
+
+            return base.View(model);
+
+        }
+
+
         public async Task<IActionResult> IndexOff(string nomePesquisar, int page = 1)
         {
 
