@@ -27,7 +27,8 @@ namespace HappyBDay.Data
 
         internal static async Task InsertFakeUsersAsync(UserManager<IdentityUser> userManager)
         {
-                       
+            if (userManager.Users.Any()) return; 
+            
             IdentityUser user = await CreateUserIfDontExists(userManager, "Bernardo@bbdl.com", "Password#123");
             await AddUserRoleIfNeeded(userManager, user, Role_User);
 
