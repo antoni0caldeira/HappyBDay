@@ -28,6 +28,8 @@ namespace HappyBDay.Models
         [Display(Name = "Profile")]
         public int IdProfile { get; set; }
 
+        public bool Status { get; set; }
+
         [ForeignKey(nameof(IdProfile))]
         [InverseProperty(nameof(Profile.Users))]
         [Display(Name = "Profile")]

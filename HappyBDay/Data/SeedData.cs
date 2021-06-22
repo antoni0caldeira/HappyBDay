@@ -27,7 +27,8 @@ namespace HappyBDay.Data
 
         internal static async Task InsertFakeUsersAsync(UserManager<IdentityUser> userManager)
         {
-                       
+            if (userManager.Users.Any()) return; 
+            
             IdentityUser user = await CreateUserIfDontExists(userManager, "Bernardo@bbdl.com", "Password#123");
             await AddUserRoleIfNeeded(userManager, user, Role_User);
 
@@ -52,6 +53,7 @@ namespace HappyBDay.Data
                     Username = "Bernardo",
                     IdProfileNavigation = user,
                     Email = "Bernardo@bbdl.com",
+                    Status= true,
 
                 },
                 new Users
@@ -59,6 +61,7 @@ namespace HappyBDay.Data
                     Username = "Luís",
                     IdProfileNavigation = user,
                     Email = "Luis@bbdl.com",
+                    Status= true,
 
                 },
                 new Users
@@ -66,6 +69,7 @@ namespace HappyBDay.Data
                     Username = "David",
                     IdProfileNavigation = user,
                     Email = "David@bbdl.com",
+                    Status= true,
 
                 },
             });
