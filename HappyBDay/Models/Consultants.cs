@@ -30,6 +30,8 @@ namespace HappyBDay.Models
 
         public bool Status { get; set; }
 
+        public int Age { get; set; }
+
         [DataType(DataType.Date)]
         [Required(ErrorMessage ="Required field.")]
         [Column("Date_Of_Birth", TypeName = "date")]

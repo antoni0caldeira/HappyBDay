@@ -15,5 +15,7 @@ namespace HappyBDay.Models
         public Pagination Pagination { get; set; }
 
         public string NomePesquisar { get; set; }
+
+        
     }
 }
