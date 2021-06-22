@@ -27,9 +27,39 @@ namespace HappyBDay.Controllers
         // GET: Users
         public async Task<IActionResult> Index()
         {
-            var happyBDayContext = _context.Users.Include(u => u.IdProfileNavigation);
-            return View(await happyBDayContext.ToListAsync());
+           
+
+            var happyBDayContext = _context.Users.Include(c => c.IdProfileNavigation);
+            List<Users> users = await happyBDayContext.Where(p => p.Status.Equals(true))
+                .OrderBy(c => c.Username)
+                .ToListAsync();
+            ConsultantsListViewModel model = new ConsultantsListViewModel
+            {
+                Users = users
+            };
+
+           
+
+            return base.View(model);
+
         }
+
+        public async Task<IActionResult> IndexOff()
+        {
+            var happyBDayContext = _context.Users.Include(c => c.IdProfileNavigation);
+            List<Users> users = await happyBDayContext.Where(p => p.Status.Equals(false))
+                .OrderBy(c => c.Username)
+                .ToListAsync();
+            ConsultantsListViewModel model = new ConsultantsListViewModel
+            {
+                Users = users
+            };
+
+
+
+            return base.View(model);
+        }
+        
 
         // GET: Users/Details/5
         public async Task<IActionResult> Details(int? id)
