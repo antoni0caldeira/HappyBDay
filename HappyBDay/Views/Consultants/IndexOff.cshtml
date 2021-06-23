@@ -9,25 +9,32 @@
 
             <h1 class="mb-5" style="color: #0070AC">Consultants</h1>
 
-            <div class="card border-info mb-4">
-                <div class="card-body">
-                    <h5 class="card-title">Search</h5>
-                    <form asp-action="Index" method="get">
-                        <div class="form-group">
-                            <label for="nomePesquisar" class="control-label">Name</label>
-                            <input name="nomePesquisar" class="form-control" type="search" value="@Model.NomePesquisar" />
-                        </div>
-                        <div class="form-group">
-                            <input type="submit" values="Pesquisar" class="btn btn-primary" />
-                            <a asp-action="Index" class="btn btn-secondary">Clean</a>
-                        </div>
-                    </form>
-                </div>
-            </div>
+            @if (Model.Consultants.Count() < 1)
+            {
+                <h4 class="text-center">List Empty.</h4>
+                <h3 class="text-center">No Consultans to show.</h3>
+            }
 
-            <div class="text-left">
-                <a type="button" class="btn btn-secondary mb-5" asp-action="Create">New Consultant</a>
-            </div>
+            @if (Model.Consultants.Count() >= 1)
+            {
+                <div class="card border-info mb-4">
+                    <div class="card-body">
+                        <h5 class="card-title">Search</h5>
+                        <form asp-action="Index" method="get">
+                            <div class="form-group">
+                                <label for="nomePesquisar" class="control-label">Name</label>
+                                <input name="nomePesquisar" class="form-control" type="search" value="@Model.NomePesquisar" />
+                            </div>
+                            <div class="form-group">
+                                <input type="submit" values="Pesquisar" class="btn btn-primary" />
+                                <a asp-action="Index" class="btn btn-secondary">Clean</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+            }
+
 
             @if (Model.Consultants.Count() > 0)
             {
@@ -39,11 +46,11 @@
                                 Name
                             </th>
                             @*<th>
-                                    E-mail
-                                </th>
-                                <th>
-                                    Phone
-                                </th>*@
+                            E-mail
+                        </th>
+                        <th>
+                            Phone
+                        </th>*@
                             <th>
                                 Status
                             </th>
@@ -51,11 +58,11 @@
                                 Date of Birthday
                             </th>
                             @*<th>
-                                    Consultant Number
-                                </th>
-                                <th>
-                                    Gender
-                                </th>*@
+                            Consultant Number
+                        </th>
+                        <th>
+                            Gender
+                        </th>*@
                             <th>
                                 Department
                             </th>
@@ -70,11 +77,11 @@
                                     @Html.DisplayFor(modelItem => item.Name)
                                 </td>
                                 @*<td>
-                                        @Html.DisplayFor(modelItem => item.Email)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.Phone)
-                                    </td>*@
+                                @Html.DisplayFor(modelItem => item.Email)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Phone)
+                            </td>*@
                                 <td>
                                     @Html.DisplayFor(modelItem => item.Status)
                                 </td>
@@ -82,11 +89,11 @@
                                     @Html.DisplayFor(modelItem => item.DateOfBirth)
                                 </td>
                                 @*<td>
-                                        @Html.DisplayFor(modelItem => item.ConsultantNumber)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.Gender)
-                                    </td>*@
+                                @Html.DisplayFor(modelItem => item.ConsultantNumber)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Gender)
+                            </td>*@
                                 <td>
                                     @Html.DisplayFor(modelItem => item.IdDepartmentsNavigation.Name)
                                 </td>
@@ -102,45 +109,47 @@
             }
 
         </div>
+        @if (Model.Consultants.Count() > 0)
+        {
+            <nav>
+                <ul class="pagination">
+                    @{
+                        int initialPage = Model.Pagination.CurrentPage - Pagination.NUMBER_PAGES_SHOW_BEFORE_AFTER;
+                        if (initialPage < 1)
+                        {
+                            initialPage = 1;
+                        }
 
-        <nav>
-            <ul class="pagination">
-                @{
-                    int initialPage = Model.Pagination.CurrentPage - Pagination.NUMBER_PAGES_SHOW_BEFORE_AFTER;
-                    if (initialPage < 1)
-                    {
-                        initialPage = 1;
+                        int finalPage = Model.Pagination.CurrentPage + Pagination.NUMBER_PAGES_SHOW_BEFORE_AFTER;
+                        if (finalPage > Model.Pagination.TotalPages)
+                        {
+                            finalPage = Model.Pagination.TotalPages;
+                        }
                     }
 
-                    int finalPage = Model.Pagination.CurrentPage + Pagination.NUMBER_PAGES_SHOW_BEFORE_AFTER;
-                    if (finalPage > Model.Pagination.TotalPages)
-                    {
-                        finalPage = Model.Pagination.TotalPages;
-                    }
-                }
 
-
-                <li class="page-item @(Model.Pagination.CurrentPage == 1 ? "disabled" : "")">
-                    <a class="page-link text-black-50 border-info" asp-action="Index" asp-route-page="1">First</a>
-                </li>
-
-                @for (int i = initialPage; i <= finalPage; i++)
-                {
-                    <li class="page-item @(Model.Pagination.CurrentPage == i ? "active" : "")">
-                        <a class="page-link text-black-50 border-info" asp-action="Index" asp-route-page="@i">@i</a>
+                    <li class="page-item @(Model.Pagination.CurrentPage == 1 ? "disabled" : "")">
+                        <a class="page-link text-black-50 border-info" asp-action="Index" asp-route-page="1">First</a>
                     </li>
-                }
 
-                <li class="page-item @(Model.Pagination.CurrentPage == Model.Pagination.TotalPages ? "disabled" : "")">
-                    <a class="page-link text-black-50 border-info" asp-action="Index" asp-route-page="@Model.Pagination.TotalPages">Last</a>
-                </li>
+                    @for (int i = initialPage; i <= finalPage; i++)
+                    {
+                        <li class="page-item @(Model.Pagination.CurrentPage == i ? "active" : "")">
+                            <a class="page-link text-black-50 border-info" asp-action="Index" asp-route-page="@i">@i</a>
+                        </li>
+                    }
 
-            </ul>
-        </nav>
+                    <li class="page-item @(Model.Pagination.CurrentPage == Model.Pagination.TotalPages ? "disabled" : "")">
+                        <a class="page-link text-black-50 border-info" asp-action="Index" asp-route-page="@Model.Pagination.TotalPages">Last</a>
+                    </li>
 
+                </ul>
+            </nav>
+        }
+        <div class="text-left mt-4">
+            <a asp-action="Index">Back to List</a>
+        </div>
     </div>
-    <div class="text-left mt-4">
-        <a asp-action="Index">Back to List</a>
-    </div>
+    
     
 </section>

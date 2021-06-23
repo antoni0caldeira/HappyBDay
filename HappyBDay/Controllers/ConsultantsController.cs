@@ -68,6 +68,7 @@ namespace HappyBDay.Controllers
             List<Consultants> consultants = await happyBDayContext.Where(p => p.Status.Equals(true) && (p.DateOfBirth.Day == day) && (p.DateOfBirth.Month == month))
                 .ToListAsync();
 
+
             SelectDayViewModel model = new SelectDayViewModel
             {
                 Consultants = consultants,
