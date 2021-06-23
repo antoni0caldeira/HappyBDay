@@ -9,40 +9,46 @@
         <div class="row gx-4 gx-lg-5 justify-content-center">
 
             <h1 class="mb-5" style="color: #0070AC">Users Off</h1>
+            <div class="row">
+                @*<div class="text-left col-3">
+                    <a type="button" class="btn btn-secondary mb-5" asp-action="Reactivate">Reactivate</a>
+                </div>*@
+                
 
-            <table class="table">
-                <thead style="color: #0070AC">
-                    <tr>
-                        <th>
-                            @Html.DisplayNameFor(model => model.Users[0].Username)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.Users[0].IdProfileNavigation)
-                        </th>
-                        <th></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach (var item in Model.Users)
-                    {
+                <table class="table">
+                    <thead style="color: #0070AC">
                         <tr>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Username)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.IdProfileNavigation.Name)
-                            </td>
-                            <td>
-                                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                                @*<a asp-action="Delete" asp-route-id="@item.Id">Delete</a>*@
-                                <a asp-area="Identity" asp-page="/Account/Manage/DeletePersonalData" asp-route-id="@item.Id">Delete</a>
-
-                            </td>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Users[0].Username)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Users[0].IdProfileNavigation)
+                            </th>
+                            <th></th>
                         </tr>
-                    }
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.Users)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Username)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.IdProfileNavigation.Name)
+                                </td>
+                                <td>
+                                    @*<a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |*@
+                                    @*<a asp-action="Delete" asp-route-id="@item.Id">Delete</a>*@
+                                    <a asp-action="Reactivate" asp-route-id="@item.Id">Reactivate</a>
+
+
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
         </div>
-    </div>
 </section>
