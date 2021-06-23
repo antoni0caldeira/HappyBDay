@@ -68,6 +68,7 @@ namespace HappyBDay.Controllers
             List<Consultants> consultants = await happyBDayContext.Where(p => p.Status.Equals(true) && (p.DateOfBirth.Day == day) && (p.DateOfBirth.Month == month))
                 .ToListAsync();
 
+
             SelectDayViewModel model = new SelectDayViewModel
             {
                 Consultants = consultants,
@@ -139,6 +140,13 @@ namespace HappyBDay.Controllers
                 Consultants = consultants,
                 NomePesquisar = nomePesquisar
             };
+
+            foreach (var item in model.Consultants)
+            {
+                int age = DateTime.Today.Year - item.DateOfBirth.Year;
+                item.Age = age;
+
+            }
 
             return base.View(model);
         }

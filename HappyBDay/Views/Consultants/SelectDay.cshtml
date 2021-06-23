@@ -45,14 +45,15 @@
                                     </div>
                                 </div>
                             </div>
-                                    <div class="form-group mt-5">
-                                        <input type="submit" values="Search" class="btn btn-primary" />
-                                        <a asp-action="SelectDay" class="btn btn-secondary">Clean</a>
-                                    </div>
+                            <div class="form-group mt-5">
+                                <input type="submit" values="Search" class="btn btn-primary" />
+                                <a asp-action="SelectDay" class="btn btn-secondary">Clean</a>
+                            </div>
                         </form>
                     </div>
+                </div>
             </div>
-        </div>
+
 
 
             @if (Model.Consultants.Count() > 0)
@@ -64,14 +65,14 @@
                             <th>
                                 Name
                             </th>
-                           
+
                             <th>
                                 Status
                             </th>
                             <th>
                                 Date of Birthday
                             </th>
-                           
+
                             <th>
                                 Department
                             </th>
@@ -85,19 +86,19 @@
                                 <td>
                                     @Html.DisplayFor(modelItem => item.Name)
                                 </td>
-                                
+
                                 <td>
                                     @Html.DisplayFor(modelItem => item.Status)
                                 </td>
                                 <td>
                                     @Html.DisplayFor(modelItem => item.DateOfBirth)
                                 </td>
-                                
+
                                 <td>
                                     @Html.DisplayFor(modelItem => item.IdDepartmentsNavigation.Name)
                                 </td>
                                 <td>
-                                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> 
+                                    <a asp-action="Details" asp-route-id="@item.Id">Details</a>
                                 </td>
                             </tr>
                         }
@@ -105,6 +106,12 @@
                 </table>
             }
 
+            @*@if (Model.Consultants.Count() <= 0)
+            {
+                <h4>There are ano Consultants making wishes on this day :'(</h4>
+
+            }*@
+            
         </div>
 
 
