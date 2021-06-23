@@ -20,6 +20,9 @@
                             Name
                         </th>
                         <th>
+                            Idade
+                        </th>
+                        <th>
                             Date Of Birth
                         </th>
                         <th>
@@ -33,6 +36,9 @@
                         <tr>
                             <td>
                                 @Html.DisplayFor(modelItem => item.Name)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Age)
                             </td>
                             <td>
                                 @Html.DisplayFor(modelItem => item.DateOfBirth)
@@ -52,4 +58,8 @@
             @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
         }
     </div>
+    <div class="text-left mt-4">
+        <a asp-action="Index">Back to List</a>
+    </div>
+    
 </section>

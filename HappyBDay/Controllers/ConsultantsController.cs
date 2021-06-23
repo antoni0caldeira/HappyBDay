@@ -140,6 +140,13 @@ namespace HappyBDay.Controllers
                 NomePesquisar = nomePesquisar
             };
 
+            foreach (var item in model.Consultants)
+            {
+                int age = DateTime.Today.Year - item.DateOfBirth.Year;
+                item.Age = age;
+
+            }
+
             return base.View(model);
         }
 
