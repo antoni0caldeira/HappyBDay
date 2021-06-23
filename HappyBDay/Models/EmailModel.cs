@@ -9,12 +9,12 @@ namespace HappyBDay.Models
     public class EmailModel
     {
         [Required, Display(Name = "Email de destino"), EmailAddress]
-        public string Destino { get; set; }
+        public string Destination { get; set; }
 
         [Required, Display(Name = "Assunto")]
-        public string Assunto { get; set; }
+        public string Subject { get; set; }
 
         [Required, Display(Name = "Mensagem")]
-        public string Mensagem { get; set; }
+        public string Message { get; set; }
     }
 }
