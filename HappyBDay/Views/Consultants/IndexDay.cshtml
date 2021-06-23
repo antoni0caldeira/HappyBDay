@@ -6,54 +6,65 @@
 <section class="content-section bg-light" id="about">
     <div class="container px-4 px-lg-5">
 
-        <h1 class="text-center mb-5">Birthdays Today</h1>
+        <h1 class="text-center mb-5" style="color: #0070AC">Birthdays Today</h1>
 
-        <div>
-            <h4 class="mb-5">Consultants</h4>
+        @if (Model.Consultants.Count() < 1)
+        {
+            <h4 class="text-center mt-4">List Empty.</h4>
+            <h3 class="text-center">No one does years today.</h3>
+        }
+
+        @if (Model.Consultants.Count() > 0)
+        {
+            <div>
+                <h4 class="mb-5">Consultants</h4>
 
 
 
-            <table class="table">
-                <thead style="color: #0070AC">
-                    <tr>
-                        <th>
-                            Name
-                        </th>
-                        <th>
-                            Date Of Birth
-                        </th>
-                        <th>
-                        </th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach (var item in Model.Consultants)
-                    {
-                        //if(DateTime.Today == item.DateOfBirth)
+                <table class="table">
+                    <thead style="color: #0070AC">
                         <tr>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Name)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.DateOfBirth)
-                            </td>
-                            <td>
-                                <a asp-action="Details" asp-route-id="@item.Id">Details</a>
-                            </td>
+                            <th>
+                                Name
+                            </th>
+                            <th>
+                                Date Of Birth
+                            </th>
+                            <th>
+                            </th>
                         </tr>
-                    }
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.Consultants)
+                        {
+                            //if(DateTime.Today == item.DateOfBirth)
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Name)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.DateOfBirth)
+                                </td>
+                                <td>
+                                    <a asp-action="Details" asp-route-id="@item.Id">Details</a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
 
+            </div>
+        }
+        <div class="text-left mt-5">
+            <a asp-action="Index">Back to List</a>
         </div>
     </div>
+    
     <div>
         @section Scripts {
             @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
         }
     </div>
-    <div class="text-left mt-4">
-        <a asp-action="Index">Back to List</a>
-    </div>
-    
+
+
 </section>
