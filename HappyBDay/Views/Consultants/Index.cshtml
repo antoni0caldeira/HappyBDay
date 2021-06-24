@@ -1,4 +1,4 @@
-﻿@model ConsultantsListViewModel
+@model ConsultantsListViewModel
 
 @{
     ViewData["Title"] = "Consultants";
@@ -9,17 +9,18 @@
 
             <h1 class="mb-5">Consultants</h1>
 
-            <div class="card border-info mb-4">
+            <div class="card mb-4 border-0">
                 <div class="card-body">
-                    <h5 class="card-title">Search</h5>
+                    <h3 class="card-title">Search</h3>
                     <form asp-action="Index" method="get">
                         <div class="form-group">
-                            <label for="nomePesquisar" class="control-label">Name</label>
+                            <label for="nomePesquisar" class="control-label" style="color:white">Name</label>
                             <input name="nomePesquisar" class="form-control" type="search" value="@Model.NomePesquisar" />
                         </div>
                         <div class="form-group">
                             <input type="submit" value="Search" class="btn btn-primary" />
-                            <a asp-action="Index" class="btn btn-secondary">Clean</a>
+                          
+                            <a asp-action="Index" class="btn btn-secondary">Clear</a>
                         </div>
                     </form>
                 </div>
@@ -48,20 +49,20 @@
                 <table class="table">
                     <thead style="color: #0070AC">
                         <tr>
-                            <th>
+                            <th style="border-top:none">
                                 Name
                             </th>
-                            <th>
+                            <th style="border-top:none">
                                 This year will do
                             </th>
                             @*<th>
                                 Phone
                             </th>*@
-                            <th>
+                            <th style="border-top:none">
                                 Status
                             </th>
-                            <th>
-                                Date of Birthday
+                            <th style="border-top:none">
+                                Date of birth
                             </th>
                             @*<th>
                                 Consultant Number
@@ -69,10 +70,10 @@
                             <th>
                                 Gender
                             </th>*@
-                            <th>
+                            <th style="border-top:none">
                                 Department
                             </th>
-                            <th></th>
+                            <th style="border-top:none"></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -83,7 +84,7 @@
                                     @Html.DisplayFor(modelItem => item.Name)
                                 </td>
                                 <td>
-                                    @Html.DisplayFor(modelItem => item.Age)
+                                    @Html.DisplayFor(modelItem => item.Age) years
                                 </td>
                                 @*<td>
                                     @Html.DisplayFor(modelItem => item.Phone)
@@ -105,8 +106,8 @@
                                 </td>
                                 <td>
                                     @*<a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |*@
-                                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                                    <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-primary">Details</a>
+                                    <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger">Delete</a>
                                 </td>
                             </tr>
                         }

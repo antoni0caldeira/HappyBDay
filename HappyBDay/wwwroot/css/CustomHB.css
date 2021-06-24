@@ -6,10 +6,19 @@
     #32322c Preto  ->Letras
     #59d6e0 Azul dos bolos -> Background
     #e28599 Rosa dos bolos -> Botão login
-    mediumpurple -> Hover do botão
+    mediumpurple Roxo -> Hover do botão
+    #083d77  Azul Petroleo?
+    #feeb80 Amarelo claro
+    #0070AC azul titulos tabelas
+    #cb065b rosa escuro
 */
 
-
+/* Botões
+    Primary - Rosa -> Search, details, edit
+    Secondary - Azul -> Limpar pesquisa
+    Danger - Vermelho -> Delete
+    Light - Amarelo -> Voltar atrás
+*/
 .font {
     font-family: Arial,Consolas;
     font-size: 40px;
