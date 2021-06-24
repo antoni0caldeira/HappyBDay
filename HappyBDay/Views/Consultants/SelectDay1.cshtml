@@ -12,7 +12,7 @@
             <div class="card border-info mb-4">
                 <div class="card-body">
                     <div class="col-md">
-                        <form asp-action="SelectDay1" method="get">
+                        <form asp-action="SelectDay" method="get">
                             <div class="form-group justify-content-between">
                                 <div class="row">
                                     <div class="col">
@@ -110,15 +110,15 @@
             }
             else
             {
-                @ViewBag.Mensagem
+              @ViewBag.Mensagem
             }
-
+            
             @*@if (Model.Consultants.Count() <= 0)
-        {
-            <h4>There are ano Consultants making wishes on this day :'(</h4>
+            {
+                <h4>There are ano Consultants making wishes on this day :'(</h4>
 
-        }*@
-
+            }*@
+            
         </div>
 
 
