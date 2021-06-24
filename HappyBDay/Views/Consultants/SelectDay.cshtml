@@ -7,16 +7,16 @@
     <div class="container px-4 px-lg-5 text-center">
         <div class="row gx-4 gx-lg-5 justify-content-center">
 
-            <h1 class="mb-5" style="color: #0070AC">Select specific Day and Month</h1>
+            <h1 class="mb-5">Select specific Day and Month</h1>
 
-            <div class="card border-info mb-4">
+            <div class="card mb-4 border-0">
                 <div class="card-body">
                     <div class="col-md">
                         <form asp-action="SelectDay" method="get">
                             <div class="form-group justify-content-between">
                                 <div class="row">
                                     <div class="col">
-                                        <label for="Day" class="control-label">Choose the Day</label>
+                                        <label for="Day" class="control-label" style="color:white">Choose the day</label>
                                         <select asp-for="Day" class="custom-select">
                                             <option selected></option>
                                             @for (int i = 1; i <= 31; i++)
@@ -26,7 +26,7 @@
                                         </select>
                                     </div>
                                     <div class="col">
-                                        <label for="Month" class="control-label">Choose the Month</label>
+                                        <label for="Month" class="control-label" style="color:white">Choose the month</label>
                                         <select asp-for="Month" class="custom-select">
                                             <option selected></option>
                                             <option value="1">January</option>
@@ -46,8 +46,8 @@
                                 </div>
                             </div>
                             <div class="form-group mt-5">
-                                <input type="submit" values="Search" class="btn btn-primary" />
-                                <a asp-action="SelectDay" class="btn btn-secondary">Clean</a>
+                                <input type="submit" value="Search" class="btn btn-primary" />
+                                <a asp-action="SelectDay" class="btn btn-secondary">Clear</a>
                             </div>
                         </form>
                     </div>
@@ -62,21 +62,21 @@
                 <table class="table">
                     <thead style="color: #0070AC">
                         <tr>
-                            <th>
+                            <th style="border-top:none">
                                 Name
                             </th>
 
-                            <th>
+                            <th style="border-top:none">
                                 Status
                             </th>
-                            <th>
+                            <th style="border-top:none">
                                 Date of Birthday
                             </th>
 
-                            <th>
+                            <th style="border-top:none">
                                 Department
                             </th>
-                            <th></th>
+                            <th style="border-top:none"></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -98,7 +98,7 @@
                                     @Html.DisplayFor(modelItem => item.IdDepartmentsNavigation.Name)
                                 </td>
                                 <td>
-                                    <a asp-action="Details" asp-route-id="@item.Id">Details</a>
+                                    <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-primary">Details</a>
                                 </td>
                             </tr>
                         }
