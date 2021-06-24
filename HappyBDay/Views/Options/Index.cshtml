@@ -13,7 +13,7 @@
             <div class="col-md-7">
             </div>
             <div class="col-md-3">
-                <a style="text-decoration-color:white" class="nav-link text-white" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @User.Identity.Name!</a>
+                <a style="text-decoration-color:white" class="nav-link text-white" asp-area="Identity" asp-page="/Account/Manage/ChangePassword" title="Manage">Account settings</a>
             </div>
             <div class="col-md-1">
                 <form class="form-inline text-white" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
@@ -27,8 +27,8 @@
     
     <div class="container px-4 px-lg-5">
         <div class="content-section-heading mb-4">
-            <h2 class="text-secondary mb-4">It's Happy Birthday time!</h2>
-            <h3 class="mb-4">Let's send some congratulation e-mails...</h3>
+            <h2 class="text-secondary mb-4">It's Birthday time!</h2>
+            <h3 class="mb-4">Let's send some happy birthday e-mails!!!</h3>
             <a class="btn btn-secondary mb-5" asp-area="" asp-controller="TesteEmail" asp-action="TesteEnvioEmail">Send E-mails</a>
             <hr />
         </div>
