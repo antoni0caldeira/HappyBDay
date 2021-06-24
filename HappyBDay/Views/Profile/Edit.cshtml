@@ -5,9 +5,9 @@
 }
 <section class="content-section bg-light" id="about">
     <div class="container px-4 px-lg-5">
-        <h1>Edit</h1>
+        <h1 style="text-align:center">Edit</h1>
 
-        <h4>Profile</h4>
+        <h3 style="text-align:center">Profile</h3>
         <hr />
         <div class="row">
             <div class="col-md-4">
@@ -21,14 +21,12 @@
                     </div>
                     <div class="form-group">
                         <input type="submit" value="Save" class="btn btn-primary" />
+                        <a asp-action="Index" class="btn btn-light">Back to List</a>
                     </div>
                 </form>
             </div>
         </div>
 
-        <div>
-            <a asp-action="Index">Back to List</a>
-        </div>
 
         @section Scripts {
             @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
