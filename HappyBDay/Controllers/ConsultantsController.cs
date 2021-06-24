@@ -62,6 +62,7 @@ namespace HappyBDay.Controllers
         {
 
 
+
             var happyBDayContext = _context.Consultants.Include(c => c.IdDepartmentsNavigation);
 
 
@@ -75,6 +76,42 @@ namespace HappyBDay.Controllers
                 Day = day,
                 Month = month
             };
+
+            if (consultants.Count() == 0)
+            {
+                ViewBag.Mensagem = "Efectue uma pesquisa";
+                return base.View(model);
+            }
+
+            return base.View(model);
+
+        }
+
+        public async Task<IActionResult> SelectDay1(int day, int month)
+        {
+
+
+
+            var happyBDayContext = _context.Consultants.Include(c => c.IdDepartmentsNavigation);
+
+
+            List<Consultants> consultants = await happyBDayContext.Where(p => p.Status.Equals(true) && (p.DateOfBirth.Day == day) && (p.DateOfBirth.Month == month))
+                .ToListAsync();
+
+
+            SelectDayViewModel model = new SelectDayViewModel
+            {
+                Consultants = consultants,
+                Day = day,
+                Month = month
+            };
+
+
+            if(consultants.Count() == 0)
+            {
+                ViewBag.Mensagem = "Lista vazia";
+                return base.View(model);
+            }
 
             return base.View(model);
 

@@ -80,14 +80,14 @@ namespace HappyBDay.Controllers
             return View(users);
         }
 
-        // GET: Users/Create
+        // GET: Users/Register
         public IActionResult Register()
         {
             ViewData["IdProfile"] = new SelectList(_context.Profile, "Id", "Name");
             return View();
         }
 
-        // POST: Users/Create
+        // POST: Users/Register
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -132,6 +132,57 @@ namespace HappyBDay.Controllers
            
            
            
+        }
+
+        public async Task<IActionResult> Reactivate(int id, Users users)
+        {
+            ViewData["IdProfile"] = new SelectList(_context.Profile, "Id", "Name", users.IdProfile);
+
+            var userReac = await _context.Users.AsNoTracking().FirstOrDefaultAsync(c=> c.Id ==id);
+
+            IdentityUser user = await _userManager.FindByNameAsync(userReac.Email);
+
+            if (user != null)
+            {
+                ModelState.AddModelError("Email", "There is already a user with that email");
+            }
+
+
+            user = new IdentityUser(userReac.Email);
+            IdentityResult result = await _userManager.CreateAsync(user, "Password#123");
+            if (!result.Succeeded)
+            {
+                ModelState.AddModelError("", "Faild to register, please try again later.");
+            }
+            else
+            {
+                await _userManager.AddToRoleAsync(user, "User");
+            }
+
+            //if (!ModelState.IsValid)
+            //{
+            //    return View(userInfo);
+            //}
+            if (id != users.Id)
+            {
+                return NotFound();
+            }
+
+            users.Email = userReac.Email;
+            users.IdProfile = userReac.IdProfile;
+            users.Status = true;
+            users.Username = userReac.Username;
+
+           
+           _context.Update(users);
+           await _context.SaveChangesAsync();
+
+
+            ViewBag.Mensagem = $"Reactivated user {users.Email} and reset password: Password#123 ";
+            return View("Sucess");
+
+
+
         }
 
         // GET: Users/Edit/5
