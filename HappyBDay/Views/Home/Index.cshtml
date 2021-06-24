@@ -1,9 +1,17 @@
-﻿@{
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
+@{ Layout = "../shared/_Layout - Home.cshtml"; }
+
+
+@{
     ViewData["Title"] = "Home Page";
 }
 
 <body class="masthead d-flex align-items-center">
     <div class="container px-4 px-lg-5 text-center">
-        <a class="btn btn-primary btn-xl" href="../Identity/Account/Login">Loooooogin</a>
+        <partial name="_LoginPartial - Home" />
+        @*<a class="btn btn-primary btn-xl" href="../Identity/Account/Login">Loooooogin</a>*@
     </div>
 </body>
