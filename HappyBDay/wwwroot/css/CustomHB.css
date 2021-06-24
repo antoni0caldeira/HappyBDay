@@ -1,0 +1,20 @@
+﻿/* Cores
+    #4c6085 Azul escuro
+    #39a0ed Azul claro
+    #36f1cd Verde claro
+    #13c4a3 Verde escuro
+    #32322c Preto  ->Letras
+    #59d6e0 Azul dos bolos -> Background
+    #e28599 Rosa dos bolos -> Botão login
+    mediumpurple -> Hover do botão
+*/
+
+
+.font {
+    font-family: Arial,Consolas;
+    font-size: 40px;
+    color: #32322c;
+    justify-content: center;
+    align-items: center;
+}
+

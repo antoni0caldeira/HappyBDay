@@ -39,11 +39,13 @@
   }
 }
 
-.masthead .btn{
+.masthead .btn {
     position: absolute;
-    top: 90% !important;
-    left: 50% !important;
-    background-color: black !important;
+    top: 80% !important;
+    background-color: #4c6085 !important;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
 }
 
 .navbar .logo img {
@@ -53,15 +55,14 @@
 }
 
 body {
-  margin: 0;
-  font-family: "Source Sans Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  font-size: 1rem;
-  font-weight: 400;
-  line-height: 1.5;
-  color: #212529;
-  background-color: #fff;
-  -webkit-text-size-adjust: 100%;
-  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    margin: 0;
+    font-family: "Source Sans Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    background-color: #59d6e0;
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
 hr {
@@ -84,7 +85,8 @@ h6, .h6, h5, .h5, h4, .h4, h3, .h3, h2, .h2, h1, .h1 {
 }
 
 h1, .h1 {
-  font-size: calc(1.375rem + 1.5vw);
+    font-size: calc(1.375rem + 1.5vw);
+    color: #32322c;
 }
 @media (min-width: 1200px) {
   h1, .h1 {
@@ -93,7 +95,7 @@ h1, .h1 {
 }
 
 h2, .h2 {
-  font-size: calc(1.325rem + 0.9vw);
+    font-size: calc(1.325rem + 0.9vw);
 }
 @media (min-width: 1200px) {
   h2, .h2 {
@@ -305,7 +307,8 @@ th {
 }
 
 label {
-  display: inline-block;
+    display: inline-block;
+    color: #32322c;
 }
 
 button {
@@ -2938,7 +2941,7 @@ textarea.form-control-lg {
   }
 }
 .btn:hover {
-  color: #212529;
+  color: mediumpurple;
 }
 .btn-check:focus + .btn, .btn:focus {
   outline: 0;
@@ -2950,13 +2953,13 @@ textarea.form-control-lg {
 }
 
 .btn-primary {
-  color: #fff;
-  background-color: #1D809F;
-  border-color: #1D809F;
+    color: #fff;
+    background-color: #e28599;
+    border-color: #1D809F;
 }
 .btn-primary:hover {
-  color: #fff;
-  background-color: #196d87;
+  color: white;
+  background-color: mediumpurple;
   border-color: #17667f;
 }
 .btn-check:focus + .btn-primary, .btn-primary:focus {
@@ -2980,26 +2983,26 @@ textarea.form-control-lg {
 }
 
 .btn-secondary {
-  color: #000;
-  background-color: #ecb807;
-  border-color: #ecb807;
+    color: #000;
+    background-color: #39a0ed;
+    border-color: #4c6085;
 }
-.btn-secondary:hover {
-  color: #000;
-  background-color: #efc32c;
-  border-color: #eebf20;
-}
+    .btn-secondary:hover {
+        color: #000;
+        background-color: #4c6085;
+        border-color: #4c6085;
+    }
 .btn-check:focus + .btn-secondary, .btn-secondary:focus {
   color: #000;
   background-color: #efc32c;
   border-color: #eebf20;
   box-shadow: 0 0 0 0.25rem rgba(201, 156, 6, 0.5);
 }
-.btn-check:checked + .btn-secondary, .btn-check:active + .btn-secondary, .btn-secondary:active, .btn-secondary.active, .show > .btn-secondary.dropdown-toggle {
-  color: #000;
-  background-color: #f0c639;
-  border-color: #eebf20;
-}
+    .btn-check:checked + .btn-secondary, .btn-check:active + .btn-secondary, .btn-secondary:active, .btn-secondary.active, .show > .btn-secondary.dropdown-toggle {
+        color: #000;
+        background-color: #4c6085;
+        border-color: #4c6085;
+    }
 .btn-check:checked + .btn-secondary:focus, .btn-check:active + .btn-secondary:focus, .btn-secondary:active:focus, .btn-secondary.active:focus, .show > .btn-secondary.dropdown-toggle:focus {
   box-shadow: 0 0 0 0.25rem rgba(201, 156, 6, 0.5);
 }
@@ -3890,12 +3893,12 @@ textarea.form-control-lg {
   background-color: transparent;
   border-color: transparent;
 }
-.nav-tabs .nav-link.active,
-.nav-tabs .nav-item.show .nav-link {
-  color: #495057;
-  background-color: #fff;
-  border-color: #dee2e6 #dee2e6 #fff;
-}
+    .nav-tabs .nav-link.active,
+    .nav-tabs .nav-item.show .nav-link {
+        color: #495057;
+        background-color: #13c4a3;
+        border-color: #dee2e6 #dee2e6 #fff;
+    }
 .nav-tabs .dropdown-menu {
   margin-top: -1px;
   border-top-left-radius: 0;
@@ -7340,7 +7343,7 @@ textarea.form-control-lg {
 }
 
 .text-secondary {
-  color: #ecb807 !important;
+    color: #e28599 !important;
 }
 
 .text-success {
@@ -7392,11 +7395,11 @@ textarea.form-control-lg {
 }
 
 .bg-primary {
-  background-color: #1D809F !important;
+    background-color: #59d6e0 !important;
 }
 
 .bg-secondary {
-  background-color: #ecb807 !important;
+    background-color: #59d6e0 !important;
 }
 
 .bg-success {
@@ -7416,7 +7419,7 @@ textarea.form-control-lg {
 }
 
 .bg-light {
-  background-color: #f8f9fa !important;
+    background-color: #59d6e0 !important;
 }
 
 .bg-dark {
@@ -11032,7 +11035,7 @@ footer.footer .social-link:hover {
   background: linear-gradient(90deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.1) 100%), url("../img/bolo.png");
   background-position: center center;
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size:cover;
 }
 .masthead h1, .masthead .h1 {
   font-size: 4rem;
