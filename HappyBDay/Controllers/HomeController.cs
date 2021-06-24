@@ -11,6 +11,7 @@ namespace HappyBDay.Controllers
 {
     public class HomeController : Controller
     {
+        
         private readonly ILogger<HomeController> _logger;
 
         public HomeController(ILogger<HomeController> logger)
@@ -20,7 +21,14 @@ namespace HappyBDay.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            if(User.Identity.IsAuthenticated == true)
+            {
+                return RedirectToAction("Index", "Options");
+            }
+            else
+            {
+                return View();
+            }
         }
 
         public IActionResult Privacy()
