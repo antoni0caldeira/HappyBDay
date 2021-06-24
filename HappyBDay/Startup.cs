@@ -79,7 +79,7 @@ namespace HappyBDay
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Consultants}/{action=SelectDay}/{id?}");
+                    pattern: "{controller=Home}/{action=Index}/{id?}");
                 endpoints.MapRazorPages();
             });
 
