@@ -6,34 +6,34 @@
 <section class="content-section bg-light" id="about">
     <div class="container px-4 px-lg-5">
 
-        <h1 class="text-center mb-5" style="color: #0070AC">Birthdays this month</h1>
+        <h1 class="text-center mb-5">Birthdays this month</h1>
 
         @if (Model.Consultants.Count() < 1)
         {
             <h4 class="text-center mt-4">List Empty.</h4>
-            <h3 class="text-center">No one does years today.</h3>
+            <h3 class="text-center">There are no birthdays this month.</h3>
         }
 
         @if (Model.Consultants.Count() > 0)
         {
             <div>
-                <h4 class="mb-5">Consultants</h4>
+                <h3  class="text-center mb-5">Consultants</h3>
 
 
 
                 <table class="table">
                     <thead style="color: #0070AC">
                         <tr>
-                            <th>
+                            <th style="border-top:none">
                                 Name
                             </th>
-                            <th>
-                                Idade
+                            <th style="border-top:none">
+                                Age
                             </th>
-                            <th>
-                                Date Of Birth
+                            <th style="border-top:none">
+                                Date Of birth
                             </th>
-                            <th>
+                            <th style="border-top:none">
                             </th>
                         </tr>
                     </thead>
@@ -52,7 +52,7 @@
                                     @Html.DisplayFor(modelItem => item.DateOfBirth)
                                 </td>
                                 <td>
-                                    <a asp-action="Details" asp-route-id="@item.Id">Details</a>
+                                    <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-primary">Details</a>
                                 </td>
                             </tr>
                         }
@@ -62,7 +62,7 @@
             </div>
         }
         <div class="text-left mt-4">
-            <a asp-action="Index">Back to List</a>
+            <a asp-action="Index" class="btn btn-light">Back to List</a>
         </div>
     </div>
     <div>
