@@ -7,7 +7,7 @@
     <div class="container px-4 px-lg-5 text-center">
         <div class="row gx-4 gx-lg-5 justify-content-center">
 
-            <h1 class="mb-5" style="color: #0070AC">Profiles</h1>
+            <h1 class="mb-5">Profiles</h1>
             <div class="text-left">
                 <a type="button" class="btn btn-secondary mb-5" asp-action="Create">New Profile</a>
             </div>
@@ -15,10 +15,10 @@
             <table class="table">
                 <thead style="color: #0070AC">
                     <tr>
-                        <th>
+                        <th style="border-top:none">
                             @Html.DisplayNameFor(model => model.Name)
                         </th>
-                        <th></th>
+                        <th style="border-top:none"></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -30,8 +30,8 @@
                             </td>
                             <td>
                                 @*<a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |*@
-                                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                                <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-primary">Details</a>
+                                <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger">Delete</a>
                             </td>
                         </tr>
                     }

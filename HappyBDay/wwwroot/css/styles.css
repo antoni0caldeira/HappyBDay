@@ -46,7 +46,14 @@
     left: 50%;
     -ms-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
+    border-color: #4c6085;
 }
+.masthead .btn:hover {
+    color: #fff;
+    background-color: #4c6085;
+    border-color: #4c6085;
+}
+
 
 .navbar .logo img {
     max-height: 40px;
@@ -2959,29 +2966,29 @@ textarea.form-control-lg {
     background-color: #e28599;
     border-color: #cb065b;
 }
-    .btn-primary:hover {
-        color: #fff;
-        background-color: #cb065b;
-        border-color: #cb065b;
-    }
+.btn-primary:hover {
+    color: #fff;
+    background-color: #cb065b;
+    border-color: #cb065b;
+}
 .btn-check:focus + .btn-primary, .btn-primary:focus {
-  color: #fff;
-  background-color: #196d87;
-  border-color: #17667f;
-  box-shadow: 0 0 0 0.25rem rgba(63, 147, 173, 0.5);
+    color: #fff;
+    background-color: #cb065b;
+    border-color: #cb065b;
+    box-shadow: 0 0 0 0.25rem rgba(63, 147, 173, 0.5);
 }
 .btn-check:checked + .btn-primary, .btn-check:active + .btn-primary, .btn-primary:active, .btn-primary.active, .show > .btn-primary.dropdown-toggle {
-  color: #fff;
-  background-color: #17667f;
-  border-color: #166077;
+    color: #fff;
+    background-color: #cb065b;
+    border-color: #cb065b;
 }
-.btn-check:checked + .btn-primary:focus, .btn-check:active + .btn-primary:focus, .btn-primary:active:focus, .btn-primary.active:focus, .show > .btn-primary.dropdown-toggle:focus {
-  box-shadow: 0 0 0 0.25rem rgba(63, 147, 173, 0.5);
-}
+    .btn-check:checked + .btn-primary:focus, .btn-check:active + .btn-primary:focus, .btn-primary:active:focus, .btn-primary.active:focus, .show > .btn-primary.dropdown-toggle:focus {
+        box-shadow: 0 0 0 0.25rem #cb065b;
+    }
 .btn-primary:disabled, .btn-primary.disabled {
-  color: #fff;
-  background-color: #1D809F;
-  border-color: #1D809F;
+    color: #fff;
+    background-color: #cb065b;
+    border-color: #cb065b;
 }
 
 .btn-secondary {
@@ -4269,7 +4276,7 @@ textarea.form-control-lg {
     word-wrap: break-word;
     background-color: #59d6e0;
     background-clip: border-box;
-    border: 1px solid rgba(0, 0, 0, 0.125);
+    border: 1px solid #59d6e0;
     border-radius: 0.25rem;
 }
 .card > hr {
