@@ -152,7 +152,7 @@ namespace HappyBDay.Controllers
             {
                 if(_context.Consultants.Any(c => c.IdDepartments == departments.Id))
                 {
-                    ViewBag.Mensage = $"The Department can't be deleted, because there are Consultants in that department";
+                    ViewBag.Message = $"The Department can't be deleted, because there are Consultants in that department";
                     
                 }
                 return View("Error");
