@@ -124,6 +124,8 @@ namespace HappyBDay.Controllers
                 Username = userInfo.Username,
                 IdProfile = userInfo.IdProfile,
                 Email = userInfo.Email,
+                Status = userInfo.Status,
+
             };
             
               _context.Add(userOriginal);
