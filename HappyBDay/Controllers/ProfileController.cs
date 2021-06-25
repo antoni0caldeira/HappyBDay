@@ -142,8 +142,21 @@ namespace HappyBDay.Controllers
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var profile = await _context.Profile.FindAsync(id);
-            _context.Profile.Remove(profile);
-            await _context.SaveChangesAsync();
+            try
+            {
+                _context.Profile.Remove(profile);
+                await _context.SaveChangesAsync();
+            }
+            catch(Exception)
+            {
+                if (_context.Profile.Any(c => c.Id == profile.Id))
+                {
+                    ViewBag.Message = $"The Profile can't be deleted, because there are Consultants with that Profile";
+
+                }
+                return View("Error");
+            }
+           
             return RedirectToAction(nameof(Index));
         }
 
