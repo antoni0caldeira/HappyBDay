@@ -211,6 +211,8 @@ namespace HappyBDay.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Id,Username,Email,IdProfile,Status")] Users users)
         {
+            var user = await _context.Users.AsNoTracking().SingleOrDefaultAsync(c => c.Id == id);
+
             if (id != users.Id)
             {
                 return NotFound();
@@ -220,6 +222,7 @@ namespace HappyBDay.Controllers
             {
                 try
                 {
+                    users.Status = user.Status;
                     _context.Update(users);
                     await _context.SaveChangesAsync();
                 }
