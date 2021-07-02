@@ -61,8 +61,10 @@ namespace HappyBDay.Controllers
                     email = consultant.Email;
                     subject = "Happy Birthday " + name.Name;
 
-                    //Mensagem
-                    string FilePath = "C:/Users/ldiogobe/source/repos/HappyBDay/HappyBDay/EmailTemplates/TemplateEmail.html";
+                //Mensagem
+                    string fileName = "TemplateEmail.html";
+                    string FilePath = Path.Combine(Environment.CurrentDirectory, @"EmailTemplates\", fileName);
+                    //string FilePath = "C:/Users/dasilvap/Desktop/Projectos/HappyDday/HappyBDay/EmailTemplates/TemplateEmail.html";
                     StreamReader str = new StreamReader(FilePath);
                     string message = str.ReadToEnd();
                     str.Close();

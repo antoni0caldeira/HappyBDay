@@ -39,6 +39,7 @@ namespace HappyBDay.Models
         public DateTime DateOfBirth { get; set; }
 
         [Column("Consultant_Number")]
+        [Required(ErrorMessage = "Required field.")]
         [Display(Name = "Consultant Number")]
         [RegularExpression(@"\d{8}",ErrorMessage ="Invalid value")]
         public string ConsultantNumber { get; set; }
